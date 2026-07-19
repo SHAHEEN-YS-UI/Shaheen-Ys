@@ -34,7 +34,7 @@ from pydub import AudioSegment
 from pydub.silence import split_on_silence
 from pydub.utils import mediainfo
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CACHE_DIR,
     ELEVENLABS_API_BASE_URL,
     WHISPER_COMPUTE_TYPE,
@@ -44,8 +44,8 @@ from open_webui.config import (
     WHISPER_MULTILINGUAL,
     WHISPER_VAD_FILTER,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,
     AIOHTTP_CLIENT_TIMEOUT_MODEL_LIST,
@@ -54,13 +54,13 @@ from open_webui.env import (
     ENABLE_FORWARD_USER_INFO_HEADERS,
     ENV,
 )
-from open_webui.events import EVENTS, publish_event
-from open_webui.models.config import Config
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.headers import include_user_info_headers
-from open_webui.utils.misc import strict_match_mime_type
-from open_webui.utils.session_pool import get_session
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.headers import include_user_info_headers
+from shaheen_ys_ui.utils.misc import strict_match_mime_type
+from shaheen_ys_ui.utils.session_pool import get_session
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -329,7 +329,7 @@ def load_speech_pipeline(request):
 async def _raise_tts_error(exc: Exception, r=None) -> None:
     """Raise a standardised HTTPException from a TTS provider failure."""
     code = r.status if r is not None else 500
-    detail = 'Open WebUI: Server Connection Error'
+    detail = 'SHAHEEN -YS-UI: Server Connection Error'
     if r is not None:
         try:
             res = await r.json()
@@ -706,7 +706,7 @@ async def _transcribe_openai(request, file_path, filename, languages, file_dir, 
                     detail = f'External: {res["error"].get("message", "")}'
             except Exception:
                 detail = f'External: {e}'
-        raise Exception(detail if detail else 'Open WebUI: Server Connection Error')
+        raise Exception(detail if detail else 'SHAHEEN -YS-UI: Server Connection Error')
 
 
 async def _transcribe_deepgram(request, file_path, languages, file_dir, id):
@@ -756,7 +756,7 @@ async def _transcribe_deepgram(request, file_path, languages, file_dir, id):
 
     except Exception as e:
         log.exception(e)
-        detail = 'Open WebUI: Server Connection Error'
+        detail = 'SHAHEEN -YS-UI: Server Connection Error'
         if r is not None:
             try:
                 res = await r.json()
@@ -882,7 +882,7 @@ async def _transcribe_azure(request, file_path, filename, file_dir, id):
             detail = f'External: {e}'
         raise HTTPException(
             status_code=e.status if e.status else 500,
-            detail=detail if detail else 'Open WebUI: Server Connection Error',
+            detail=detail if detail else 'SHAHEEN -YS-UI: Server Connection Error',
         )
 
 
@@ -1041,7 +1041,7 @@ async def _transcribe_mistral(request, file_path, filename, metadata, file_dir, 
             detail = f'External: {e}'
         raise HTTPException(
             status_code=e.status if e.status else 500,
-            detail=detail if detail else 'Open WebUI: Server Connection Error',
+            detail=detail if detail else 'SHAHEEN -YS-UI: Server Connection Error',
         )
 
 

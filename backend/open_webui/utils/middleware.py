@@ -18,7 +18,7 @@ from uuid import uuid4
 from aiocache import cached
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CACHE_DIR,
     CODE_INTERPRETER_BLOCKED_MODULES,
     CODE_INTERPRETER_PYODIDE_PROMPT,
@@ -26,8 +26,8 @@ from open_webui.config import (
     DEFAULT_TOOLS_FUNCTION_CALLING_PROMPT_TEMPLATE,
     DEFAULT_VOICE_MODE_PROMPT_TEMPLATE,
 )
-from open_webui.constants import TASKS
-from open_webui.env import (
+from shaheen_ys_ui.constants import TASKS
+from shaheen_ys_ui.env import (
     BYPASS_MODEL_ACCESS_CONTROL,
     CHAT_RESPONSE_MAX_TOOL_CALL_ITERATIONS,
     CHAT_RESPONSE_STREAM_DELTA_CHUNK_SIZE,
@@ -39,58 +39,58 @@ from open_webui.env import (
     GLOBAL_LOG_LEVEL,
     RAG_SYSTEM_CONTEXT,
 )
-from open_webui.models.chats import Chats
-from open_webui.models.config import Config
-from open_webui.models.folders import Folders
-from open_webui.models.functions import Functions
-from open_webui.models.models import Models
-from open_webui.models.oauth_sessions import OAuthSessions
-from open_webui.models.users import UserModel, Users
-from open_webui.retrieval.utils import get_sources_from_items
-from open_webui.routers.images import (
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.folders import Folders
+from shaheen_ys_ui.models.functions import Functions
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.oauth_sessions import OAuthSessions
+from shaheen_ys_ui.models.users import UserModel, Users
+from shaheen_ys_ui.retrieval.utils import get_sources_from_items
+from shaheen_ys_ui.routers.images import (
     CreateImageForm,
     EditImageForm,
     image_edits,
     image_generations,
 )
-from open_webui.routers.pipelines import (
+from shaheen_ys_ui.routers.pipelines import (
     process_pipeline_inlet_filter,
     process_pipeline_outlet_filter,
 )
-from open_webui.routers.retrieval import (
+from shaheen_ys_ui.routers.retrieval import (
     SearchForm,
     process_web_search,
 )
-from open_webui.routers.tasks import (
+from shaheen_ys_ui.routers.tasks import (
     generate_chat_tags,
     generate_follow_ups,
     generate_image_prompt,
     generate_queries,
     generate_title,
 )
-from open_webui.socket.main import (
+from shaheen_ys_ui.socket.main import (
     get_event_call,
     get_event_emitter,
 )
-from open_webui.utils.access_control import has_connection_access, has_permission
-from open_webui.utils.access_control.files import get_accessible_folder_files
-from open_webui.utils.chat import generate_chat_completion
-from open_webui.utils.code_interpreter import execute_code_jupyter
-from open_webui.utils.context_compaction import compact_messages_for_request
-from open_webui.utils.files import (
+from shaheen_ys_ui.utils.access_control import has_connection_access, has_permission
+from shaheen_ys_ui.utils.access_control.files import get_accessible_folder_files
+from shaheen_ys_ui.utils.chat import generate_chat_completion
+from shaheen_ys_ui.utils.code_interpreter import execute_code_jupyter
+from shaheen_ys_ui.utils.context_compaction import compact_messages_for_request
+from shaheen_ys_ui.utils.files import (
     convert_markdown_base64_images,
     get_file_url_from_base64,
     get_image_base64_from_url,
     get_image_url_from_base64,
 )
-from open_webui.utils.filter import (
+from shaheen_ys_ui.utils.filter import (
     get_sorted_filter_ids,
     process_filter_functions,
 )
 
-from open_webui.utils.mcp.client import MCPClient
-from open_webui.utils.memory import add_memory_context, review_memory_after_turn
-from open_webui.utils.misc import (
+from shaheen_ys_ui.utils.mcp.client import MCPClient
+from shaheen_ys_ui.utils.memory import add_memory_context, review_memory_after_turn
+from shaheen_ys_ui.utils.misc import (
     add_or_update_system_message,
     add_or_update_user_message,
     convert_logit_bias_input_to_json,
@@ -110,23 +110,23 @@ from open_webui.utils.misc import (
     set_last_user_message_content,
     strip_empty_content_blocks,
 )
-from open_webui.utils.payload import apply_system_prompt_to_body, resolve_system_prompt
-from open_webui.utils.plugin import load_function_module_by_id
-from open_webui.utils.response import merge_usage, normalize_usage
-from open_webui.utils.sanitize import sanitize_code
-from open_webui.utils.task import (
+from shaheen_ys_ui.utils.payload import apply_system_prompt_to_body, resolve_system_prompt
+from shaheen_ys_ui.utils.plugin import load_function_module_by_id
+from shaheen_ys_ui.utils.response import merge_usage, normalize_usage
+from shaheen_ys_ui.utils.sanitize import sanitize_code
+from shaheen_ys_ui.utils.task import (
     get_task_model_id,
     rag_template,
     tools_function_calling_generation_template,
 )
-from open_webui.utils.tools import (
+from shaheen_ys_ui.utils.tools import (
     build_tool_server_headers,
     get_builtin_tools,
     get_terminal_tools,
     get_tools,
     get_updated_tool_function,
 )
-from open_webui.utils.webhook import post_webhook
+from shaheen_ys_ui.utils.webhook import post_webhook
 from starlette.responses import JSONResponse, Response, StreamingResponse
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
@@ -1873,7 +1873,7 @@ def apply_params_to_form_data(form_data, model):
     params = form_data.pop('params', {})
     custom_params = params.pop('custom_params', {})
 
-    open_webui_params = {
+    shaheen_ys_ui_params = {
         'stream_response': bool,
         'stream_delta_chunk_size': int,
         'function_calling': str,
@@ -1883,7 +1883,7 @@ def apply_params_to_form_data(form_data, model):
     }
 
     for key in list(params.keys()):
-        if key in open_webui_params:
+        if key in shaheen_ys_ui_params:
             del params[key]
 
     if custom_params:
@@ -2522,7 +2522,7 @@ async def process_chat_payload(request, form_data, user, metadata, model):
     )
 
     if skill_ids:
-        from open_webui.models.skills import Skills as SkillsModel
+        from shaheen_ys_ui.models.skills import Skills as SkillsModel
 
         accessible_skill_ids = {s.id for s in await SkillsModel.get_skills_by_user_id(user.id, 'read')}
         for sid in skill_ids:
@@ -3027,7 +3027,7 @@ async def get_system_oauth_token(request, user):
 
         # Fallback: no cookie (automation, API key, etc.) — use most recent session
         if oauth_token is None:
-            from open_webui.models.oauth_sessions import OAuthSessions
+            from shaheen_ys_ui.models.oauth_sessions import OAuthSessions
 
             sessions = await OAuthSessions.get_sessions_by_user_id(user.id)
             # Filter out MCP-provider sessions — their token refresh is handled
@@ -3674,7 +3674,7 @@ async def streaming_chat_response_handler(response, ctx):
                 output_type_map = {
                     'reasoning': 'reasoning',
                     'solution': 'message',  # solution tags just produce text
-                    'code_interpreter': 'open_webui:code_interpreter',
+                    'code_interpreter': 'shaheen_ys_ui:code_interpreter',
                 }
                 output_item_type = output_type_map.get(content_type, content_type)
 
@@ -3723,10 +3723,10 @@ async def streaming_chat_response_handler(response, ctx):
                                         'started_at': time.time(),
                                     }
                                 )
-                            elif output_item_type == 'open_webui:code_interpreter':
+                            elif output_item_type == 'shaheen_ys_ui:code_interpreter':
                                 output.append(
                                     {
-                                        'type': 'open_webui:code_interpreter',
+                                        'type': 'shaheen_ys_ui:code_interpreter',
                                         'id': output_id('ci'),
                                         'status': 'in_progress',
                                         'start_tag': start_tag,
@@ -3759,7 +3759,7 @@ async def streaming_chat_response_handler(response, ctx):
                                 # Set the after_tag content on the new item
                                 if output_item_type == 'reasoning':
                                     output[-1]['content'] = [{'type': 'output_text', 'text': after_tag}]
-                                elif output_item_type == 'open_webui:code_interpreter':
+                                elif output_item_type == 'shaheen_ys_ui:code_interpreter':
                                     output[-1]['code'] = after_tag
                                 else:
                                     set_last_text(output, after_tag)
@@ -3772,7 +3772,7 @@ async def streaming_chat_response_handler(response, ctx):
 
                 elif (
                     (last_type == 'reasoning' and content_type == 'reasoning')
-                    or (last_type == 'open_webui:code_interpreter' and content_type == 'code_interpreter')
+                    or (last_type == 'shaheen_ys_ui:code_interpreter' and content_type == 'code_interpreter')
                     or (last_type == 'message' and output[-1].get('_tag_type') == content_type)
                 ):
                     item = output[-1]
@@ -3787,7 +3787,7 @@ async def streaming_chat_response_handler(response, ctx):
                         block_content = ''
                         if parts and parts[-1].get('type') == 'output_text':
                             block_content = parts[-1].get('text', '')
-                    elif last_type == 'open_webui:code_interpreter':
+                    elif last_type == 'shaheen_ys_ui:code_interpreter':
                         block_content = item.get('code', '')
                     else:
                         block_content = get_last_text(output)
@@ -3814,7 +3814,7 @@ async def streaming_chat_response_handler(response, ctx):
                                 item['ended_at'] = time.time()
                                 item['duration'] = int(item['ended_at'] - item['started_at'])
                                 item['status'] = 'completed'
-                            elif last_type == 'open_webui:code_interpreter':
+                            elif last_type == 'shaheen_ys_ui:code_interpreter':
                                 item['code'] = block_content
                                 item['ended_at'] = time.time()
                                 item['duration'] = int(item['ended_at'] - item['started_at'])
@@ -4414,7 +4414,7 @@ async def streaming_chat_response_handler(response, ctx):
                                             and last_item.get('attributes', {}).get('type') != 'reasoning_content'
                                             and (
                                                 last_item_type == 'reasoning'
-                                                or last_item_type == 'open_webui:code_interpreter'
+                                                or last_item_type == 'shaheen_ys_ui:code_interpreter'
                                                 or (
                                                     last_item_type == 'message'
                                                     and last_item.get('_tag_type') is not None
@@ -4424,7 +4424,7 @@ async def streaming_chat_response_handler(response, ctx):
 
                                         if inside_tag_block:
                                             # Append to the existing tag-based item
-                                            if last_item_type == 'open_webui:code_interpreter':
+                                            if last_item_type == 'shaheen_ys_ui:code_interpreter':
                                                 last_item['code'] = last_item.get('code', '') + value
                                             elif last_item_type == 'reasoning':
                                                 parts = last_item.get('content', [])
@@ -5040,7 +5040,7 @@ async def streaming_chat_response_handler(response, ctx):
                     MAX_RETRIES = 5
                     retries = 0
 
-                    while output and output[-1].get('type') == 'open_webui:code_interpreter' and retries < MAX_RETRIES:
+                    while output and output[-1].get('type') == 'shaheen_ys_ui:code_interpreter' and retries < MAX_RETRIES:
                         await event_emitter(
                             {
                                 'type': 'chat:completion',

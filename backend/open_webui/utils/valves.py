@@ -5,7 +5,7 @@ import logging
 from functools import lru_cache
 
 from cryptography.fernet import Fernet, InvalidToken
-from open_webui.env import ENABLE_VALVE_ENCRYPTION, WEBUI_SECRET_KEY
+from shaheen_ys_ui.env import ENABLE_VALVE_ENCRYPTION, WEBUI_SECRET_KEY
 
 log = logging.getLogger(__name__)
 

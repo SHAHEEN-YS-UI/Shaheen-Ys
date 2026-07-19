@@ -8,12 +8,12 @@ from typing import Optional
 
 import aiohttp
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.config import CACHE_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL, AIOHTTP_CLIENT_TIMEOUT
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.functions import (
+from shaheen_ys_ui.config import CACHE_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL, AIOHTTP_CLIENT_TIMEOUT
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.functions import (
     FunctionForm,
     FunctionModel,
     FunctionResponse,
@@ -21,8 +21,8 @@ from open_webui.models.functions import (
     FunctionUserResponse,
     FunctionWithValvesModel,
 )
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.plugin import (
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.plugin import (
     get_functions_cache,
     get_function_module_from_cache,
     load_function_module_by_id,

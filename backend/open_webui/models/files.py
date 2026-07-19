@@ -6,8 +6,8 @@ import logging
 import time
 
 # local imports
-from open_webui.internal.db import Base, JSONField, get_async_db_context
-from open_webui.utils.misc import sanitize_metadata
+from shaheen_ys_ui.internal.db import Base, JSONField, get_async_db_context
+from shaheen_ys_ui.utils.misc import sanitize_metadata
 from pydantic import BaseModel, ConfigDict, model_validator
 from sqlalchemy import JSON, BigInteger, Column, String, Text, delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -421,7 +421,7 @@ class FilesTable:
         async with get_async_db_context(db) as db:
             try:
                 # Lazy import to avoid circular dependency
-                from open_webui.models.knowledge import KnowledgeFile
+                from shaheen_ys_ui.models.knowledge import KnowledgeFile
 
                 # Subquery: file IDs already linked to this knowledge base
                 linked_ids = (

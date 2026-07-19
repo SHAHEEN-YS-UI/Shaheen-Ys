@@ -1,7 +1,7 @@
 from base64 import b64encode
 
 from fastapi import FastAPI
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     ENABLE_OTEL_METRICS,
     ENABLE_OTEL_TRACES,
     OTEL_BASIC_AUTH_PASSWORD,
@@ -11,8 +11,8 @@ from open_webui.env import (
     OTEL_OTLP_SPAN_EXPORTER,
     OTEL_SERVICE_NAME,
 )
-from open_webui.utils.telemetry.instrumentors import Instrumentor
-from open_webui.utils.telemetry.metrics import setup_metrics
+from shaheen_ys_ui.utils.telemetry.instrumentors import Instrumentor
+from shaheen_ys_ui.utils.telemetry.metrics import setup_metrics
 from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import (

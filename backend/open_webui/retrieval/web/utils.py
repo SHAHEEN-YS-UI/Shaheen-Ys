@@ -29,7 +29,7 @@ from fastapi.concurrency import run_in_threadpool
 from langchain_community.document_loaders import PlaywrightURLLoader, WebBaseLoader
 from langchain_community.document_loaders.base import BaseLoader
 from langchain_core.documents import Document
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     ENABLE_LOCAL_WEB_FETCH,
     EXTERNAL_WEB_LOADER_API_KEY,
     EXTERNAL_WEB_LOADER_URL,
@@ -47,18 +47,18 @@ from open_webui.config import (
     WEB_LOADER_ENGINE,
     WEB_LOADER_TIMEOUT,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_ALLOW_REDIRECTS,
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,
     USER_AGENT,
 )
-from open_webui.retrieval.loaders.external_web import ExternalWebLoader
-from open_webui.retrieval.loaders.microsoft_web_iq import MicrosoftWebIQLoader
-from open_webui.retrieval.loaders.tavily import TavilyLoader
-from open_webui.retrieval.web.firecrawl import scrape_firecrawl_url
-from open_webui.utils.misc import is_host_allowed
+from shaheen_ys_ui.retrieval.loaders.external_web import ExternalWebLoader
+from shaheen_ys_ui.retrieval.loaders.microsoft_web_iq import MicrosoftWebIQLoader
+from shaheen_ys_ui.retrieval.loaders.tavily import TavilyLoader
+from shaheen_ys_ui.retrieval.web.firecrawl import scrape_firecrawl_url
+from shaheen_ys_ui.utils.misc import is_host_allowed
 
 log = logging.getLogger(__name__)
 

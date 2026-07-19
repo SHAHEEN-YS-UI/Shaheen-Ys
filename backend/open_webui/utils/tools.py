@@ -26,8 +26,8 @@ from fastapi import Request
 from langchain_core.utils.function_calling import (
     convert_to_openai_function as convert_pydantic_model_to_openai_function_spec,
 )
-from open_webui.config import BYPASS_ADMIN_ACCESS_CONTROL
-from open_webui.env import (
+from shaheen_ys_ui.config import BYPASS_ADMIN_ACCESS_CONTROL
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_ALLOW_REDIRECTS,
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_SESSION_TOOL_SERVER_SSL,
@@ -39,12 +39,12 @@ from open_webui.env import (
     FORWARD_SESSION_INFO_HEADER_MESSAGE_ID,
     REDIS_KEY_PREFIX,
 )
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.tools import Tools
-from open_webui.models.users import UserModel
-from open_webui.tools.builtin import (
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.tools import Tools
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.tools.builtin import (
     add_memory,
     calculate_timestamp,
     create_automation,
@@ -93,10 +93,10 @@ from open_webui.tools.builtin import (
     view_skill,
     write_note,
 )
-from open_webui.utils.access_control import has_access, has_connection_access, has_permission
-from open_webui.utils.headers import get_custom_headers, include_user_info_headers
-from open_webui.utils.misc import is_string_allowed
-from open_webui.utils.plugin import get_tool_contents_cache, get_tools_cache, load_tool_module_by_id
+from shaheen_ys_ui.utils.access_control import has_access, has_connection_access, has_permission
+from shaheen_ys_ui.utils.headers import get_custom_headers, include_user_info_headers
+from shaheen_ys_ui.utils.misc import is_string_allowed
+from shaheen_ys_ui.utils.plugin import get_tool_contents_cache, get_tools_cache, load_tool_module_by_id
 from pydantic import BaseModel, Field, create_model
 from pydantic.fields import FieldInfo
 
@@ -519,7 +519,7 @@ async def get_builtin_tools(
     if folder_knowledge:
         model_knowledge = list(model_knowledge or []) + list(folder_knowledge)
     if is_builtin_tool_enabled('knowledge'):
-        from open_webui.env import ENABLE_KB_EXEC
+        from shaheen_ys_ui.env import ENABLE_KB_EXEC
 
         if ENABLE_KB_EXEC:
             builtin_functions.append(kb_exec)

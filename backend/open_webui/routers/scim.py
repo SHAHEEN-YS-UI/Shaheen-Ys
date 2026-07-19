@@ -1,5 +1,5 @@
 """
-Experimental SCIM 2.0 Implementation for Open WebUI
+Experimental SCIM 2.0 Implementation for SHAHEEN -YS-UI
 Provides System for Cross-domain Identity Management endpoints for users and groups
 
 NOTE: This is an experimental implementation and may not fully comply with SCIM 2.0 standards, and is subject to change.
@@ -14,14 +14,14 @@ from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, status
 from fastapi.responses import JSONResponse
-from open_webui.config import OAUTH_PROVIDERS
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.env import SCIM_AUTH_PROVIDER
-from open_webui.internal.db import get_async_session
-from open_webui.models.groups import GroupModel, Groups
-from open_webui.models.users import UserModel, Users
-from open_webui.utils.auth import (
+from shaheen_ys_ui.config import OAUTH_PROVIDERS
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.env import SCIM_AUTH_PROVIDER
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.groups import GroupModel, Groups
+from shaheen_ys_ui.models.users import UserModel, Users
+from shaheen_ys_ui.utils.auth import (
     decode_token,
     get_admin_user,
     get_current_user,
@@ -886,7 +886,7 @@ async def create_group(
             member_ids.append(member.value)
 
     # Create group
-    from open_webui.models.groups import GroupForm
+    from shaheen_ys_ui.models.groups import GroupForm
 
     form = GroupForm(
         name=group_data.displayName,
@@ -910,7 +910,7 @@ async def create_group(
 
     # Add members if provided
     if member_ids:
-        from open_webui.models.groups import GroupUpdateForm
+        from shaheen_ys_ui.models.groups import GroupUpdateForm
 
         update_form = GroupUpdateForm(
             name=new_group.name,
@@ -958,7 +958,7 @@ async def update_group(
         )
 
     # Build update form
-    from open_webui.models.groups import GroupUpdateForm
+    from shaheen_ys_ui.models.groups import GroupUpdateForm
 
     update_form = GroupUpdateForm(
         name=group_data.displayName if group_data.displayName else group.name,
@@ -1027,7 +1027,7 @@ async def patch_group(
             detail=f'Group {group_id} not found',
         )
 
-    from open_webui.models.groups import GroupUpdateForm
+    from shaheen_ys_ui.models.groups import GroupUpdateForm
 
     update_form = GroupUpdateForm(
         name=group.name,

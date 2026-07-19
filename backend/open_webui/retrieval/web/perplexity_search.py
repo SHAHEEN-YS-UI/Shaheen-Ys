@@ -2,9 +2,9 @@ import logging
 from typing import Literal, Optional
 
 import requests
-from open_webui.env import VERSION
-from open_webui.retrieval.web.main import SearchResult, get_filtered_results
-from open_webui.utils.headers import include_user_info_headers
+from shaheen_ys_ui.env import VERSION
+from shaheen_ys_ui.retrieval.web.main import SearchResult, get_filtered_results
+from shaheen_ys_ui.utils.headers import include_user_info_headers
 
 log = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ def search_perplexity_search(
         headers = {
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'X-Pplx-Integration': f'open-webui/{VERSION}',
+            'X-Pplx-Integration': f'shaheen-ys-ui/{VERSION}',
         }
 
         # Forward user info headers if user is provided

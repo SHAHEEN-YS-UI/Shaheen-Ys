@@ -9,10 +9,10 @@ from typing import Dict
 
 import pycrdt as Y
 import socketio
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CORS_ALLOW_ORIGIN,
 )
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     ENABLE_WEBSOCKET_SUPPORT,
     GLOBAL_LOG_LEVEL,
     REDIS_KEY_PREFIX,
@@ -30,16 +30,16 @@ from open_webui.env import (
     WEBSOCKET_SERVER_PING_INTERVAL,
     WEBSOCKET_SERVER_PING_TIMEOUT,
 )
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.channels import Channels
-from open_webui.models.chats import Chats
-from open_webui.models.notes import Notes, NoteUpdateForm
-from open_webui.models.users import UserNameResponse, Users
-from open_webui.socket.utils import RedisDict, RedisLock, YdocManager
-from open_webui.tasks import create_task, stop_item_tasks
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.auth import decode_token, is_valid_token
-from open_webui.utils.redis import (
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.channels import Channels
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.notes import Notes, NoteUpdateForm
+from shaheen_ys_ui.models.users import UserNameResponse, Users
+from shaheen_ys_ui.socket.utils import RedisDict, RedisLock, YdocManager
+from shaheen_ys_ui.tasks import create_task, stop_item_tasks
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.auth import decode_token, is_valid_token
+from shaheen_ys_ui.utils.redis import (
     build_sentinel_url,
     get_redis_connection,
     get_sentinels_from_env,
@@ -861,7 +861,7 @@ async def _make_channel_emitter(request_info):
     THROTTLE_INTERVAL = 0.15  # ~6 updates/sec
 
     async def _emit_channel_update(content: str, done: bool = False):
-        from open_webui.models.messages import MessageForm, Messages
+        from shaheen_ys_ui.models.messages import MessageForm, Messages
 
         msg = await Messages.get_message_by_id(message_id)
         if not msg or msg.channel_id != channel_id:

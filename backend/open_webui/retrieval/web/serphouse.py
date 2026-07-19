@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from open_webui.retrieval.web.main import SearchResult, get_filtered_results
-from open_webui.utils.session_pool import get_session
+from shaheen_ys_ui.retrieval.web.main import SearchResult, get_filtered_results
+from shaheen_ys_ui.utils.session_pool import get_session
 
 
 async def search_serphouse(

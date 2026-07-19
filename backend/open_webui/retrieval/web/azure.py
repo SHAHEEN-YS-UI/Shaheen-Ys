@@ -1,12 +1,12 @@
 import logging
 from typing import Optional
 
-from open_webui.retrieval.web.main import SearchResult, get_filtered_results
+from shaheen_ys_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 log = logging.getLogger(__name__)
 
 """
-Azure AI Search integration for Open WebUI.
+Azure AI Search integration for SHAHEEN -YS-UI.
 Documentation: https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python
 
 Required package: azure-search-documents

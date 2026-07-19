@@ -8,7 +8,7 @@ import requests
 from langchain_core.documents import Document
 
 if TYPE_CHECKING:
-    from open_webui.retrieval.web.main import SearchResult
+    from shaheen_ys_ui.retrieval.web.main import SearchResult
 
 log = logging.getLogger(__name__)
 
@@ -204,11 +204,11 @@ def search_firecrawl(
         results = data if isinstance(data, list) else (data.get('web') or [])
 
         if filter_list:
-            from open_webui.retrieval.web.main import get_filtered_results
+            from shaheen_ys_ui.retrieval.web.main import get_filtered_results
 
             results = get_filtered_results(results, filter_list)
 
-        from open_webui.retrieval.web.main import SearchResult
+        from shaheen_ys_ui.retrieval.web.main import SearchResult
 
         search_results = []
         for result in results[:count]:

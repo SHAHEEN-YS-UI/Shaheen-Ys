@@ -26,16 +26,16 @@ from zoneinfo import ZoneInfo
 from dateutil.rrule import rrulestr
 from fastapi import Request
 from fastapi.security import HTTPAuthorizationCredentials
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_db
-from open_webui.models.automations import AutomationModel, AutomationRuns, Automations
-from open_webui.models.chats import ChatForm, Chats
-from open_webui.models.config import Config
-from open_webui.models.users import Users
-from open_webui.utils.auth import create_token
-from open_webui.utils.misc import parse_duration
-from open_webui.utils.task import prompt_template
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_db
+from shaheen_ys_ui.models.automations import AutomationModel, AutomationRuns, Automations
+from shaheen_ys_ui.models.chats import ChatForm, Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.utils.auth import create_token
+from shaheen_ys_ui.utils.misc import parse_duration
+from shaheen_ys_ui.utils.task import prompt_template
 from starlette.datastructures import Headers
 
 log = logging.getLogger(__name__)
@@ -307,12 +307,12 @@ def _resolve_model_terminal_id(app, model_id: str) -> Optional[str]:
 async def _set_terminal_cwd(app, server_id: str, user, cwd: str, chat_id: str) -> None:
     """Set the working directory on a terminal server via the proxy.
 
-    Routes through the open-webui terminal proxy endpoint so that
+    Routes through the shaheen-ys-ui terminal proxy endpoint so that
     auth headers, orchestrator policy routing, and X-User-Id are
     handled correctly — same path the frontend uses.
     """
     import aiohttp
-    from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL
+    from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL
 
     connections = getattr(getattr(app, 'state', None), 'config', None)
     if connections is None:
@@ -377,7 +377,7 @@ async def execute_automation(app, automation: AutomationModel) -> None:
             return
 
         # Re-gate the rehydrated owner: a demoted/deactivated or de-permissioned owner must not run.
-        from open_webui.utils.access_control import has_permission
+        from shaheen_ys_ui.utils.access_control import has_permission
 
         if user.role not in ('user', 'admin') or (
             user.role != 'admin'
@@ -455,7 +455,7 @@ async def execute_automation(app, automation: AutomationModel) -> None:
             return
 
         # Notify frontend to refresh chat list
-        from open_webui.socket.main import sio
+        from shaheen_ys_ui.socket.main import sio
 
         await sio.emit(
             'events',
@@ -515,7 +515,7 @@ async def execute_automation(app, automation: AutomationModel) -> None:
         await app.state.CHAT_COMPLETION_HANDLER(request, form_data, user=user)
 
         # Notify user
-        from open_webui.socket.main import sio
+        from shaheen_ys_ui.socket.main import sio
 
         await sio.emit(
             'automation:result',
@@ -560,8 +560,8 @@ async def _check_calendar_alerts(app) -> None:
     De-duplication is DB-backed via meta.alerted_at — survives restarts
     and works across multiple instances.
     """
-    from open_webui.models.calendar import CalendarEvents, CalendarEventUpdateForm
-    from open_webui.socket.main import sio
+    from shaheen_ys_ui.models.calendar import CalendarEvents, CalendarEventUpdateForm
+    from shaheen_ys_ui.socket.main import sio
 
     now_ns = int(time.time_ns())
     default_lookahead_ns = CALENDAR_ALERT_LOOKAHEAD_MINUTES * 60 * 1_000_000_000
@@ -615,7 +615,7 @@ async def _check_calendar_alerts(app) -> None:
 
         # Send webhook notification if user has one configured
         try:
-            webui_name = getattr(app.state, 'WEBUI_NAME', 'Open WebUI')
+            webui_name = getattr(app.state, 'WEBUI_NAME', 'SHAHEEN -YS-UI')
             enable_user_webhooks = await Config.get('ui.enable_user_webhooks')
 
             if enable_user_webhooks:
@@ -631,7 +631,7 @@ async def _check_calendar_alerts(app) -> None:
                         else None
                     )
                     if webhook_url:
-                        from open_webui.utils.webhook import post_webhook
+                        from shaheen_ys_ui.utils.webhook import post_webhook
 
                         time_str = f'in {minutes_until} min' if minutes_until > 0 else 'now'
                         await post_webhook(

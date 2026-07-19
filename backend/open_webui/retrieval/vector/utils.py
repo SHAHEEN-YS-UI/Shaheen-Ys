@@ -1,8 +1,8 @@
 import datetime as dt
 from typing import Any
 
-from open_webui.retrieval.vector.main import SearchResult
-from open_webui.utils.misc import sanitize_text_for_db
+from shaheen_ys_ui.retrieval.vector.main import SearchResult
+from shaheen_ys_ui.utils.misc import sanitize_text_for_db
 
 KEYS_TO_EXCLUDE = ['content', 'pages', 'tables', 'paragraphs', 'sections', 'figures']
 

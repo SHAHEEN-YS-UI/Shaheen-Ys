@@ -3,7 +3,7 @@ import time
 from typing import Optional
 from uuid import uuid4
 
-from open_webui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import JSON, BigInteger, Boolean, Column, Index, String, Text, cast, delete, func, or_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -278,14 +278,14 @@ class AutomationTable:
             result = await db.execute(stmt)
             rows = result.scalars().all()
 
-            from open_webui.utils.automations import next_run_ns
+            from shaheen_ys_ui.utils.automations import next_run_ns
 
             # Batch-fetch user timezones so rescheduling respects each
             # user's local timezone instead of falling back to server time.
             user_ids = list({row.user_id for row in rows})
             timezone_by_user_id: dict[str, Optional[str]] = {}
             if user_ids:
-                from open_webui.models.users import User
+                from shaheen_ys_ui.models.users import User
 
                 tz_result = await db.execute(select(User.id, User.timezone).where(User.id.in_(user_ids)))
                 timezone_by_user_id = {uid: tz for uid, tz in tz_result.all()}

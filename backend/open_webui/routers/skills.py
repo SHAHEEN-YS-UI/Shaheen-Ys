@@ -2,14 +2,14 @@ import logging
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.config import BYPASS_ADMIN_ACCESS_CONTROL
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.skills import (
+from shaheen_ys_ui.config import BYPASS_ADMIN_ACCESS_CONTROL
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.skills import (
     SkillAccessListResponse,
     SkillAccessResponse,
     SkillForm,
@@ -18,8 +18,8 @@ from open_webui.models.skills import (
     Skills,
     SkillUserResponse,
 )
-from open_webui.utils.access_control import filter_allowed_access_grants, has_permission
-from open_webui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.access_control import filter_allowed_access_grants, has_permission
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

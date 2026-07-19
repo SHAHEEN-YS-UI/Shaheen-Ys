@@ -17,24 +17,24 @@ import aiohttp
 from fastapi import APIRouter, Depends, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse
 from PIL import Image, ImageOps
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CACHE_DIR,
     ENABLE_OPENAI_IMAGE_EDIT_NORMALIZATION,
     IMAGE_AUTO_SIZE_MODELS_REGEX_PATTERN,
     IMAGE_URL_RESPONSE_MODELS_REGEX_PATTERN,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import AIOHTTP_CLIENT_ALLOW_REDIRECTS, AIOHTTP_CLIENT_SESSION_SSL, ENABLE_FORWARD_USER_INFO_HEADERS
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.chats import Chats
-from open_webui.models.config import Config
-from open_webui.retrieval.web.utils import get_ssrf_safe_session, validate_url
-from open_webui.routers.files import get_file_content_by_id, upload_file_handler
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.headers import include_user_info_headers
-from open_webui.utils.images.comfyui import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_ALLOW_REDIRECTS, AIOHTTP_CLIENT_SESSION_SSL, ENABLE_FORWARD_USER_INFO_HEADERS
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.retrieval.web.utils import get_ssrf_safe_session, validate_url
+from shaheen_ys_ui.routers.files import get_file_content_by_id, upload_file_handler
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.headers import include_user_info_headers
+from shaheen_ys_ui.utils.images.comfyui import (
     ComfyUICreateImageForm,
     ComfyUIEditImageForm,
     ComfyUIWorkflow,
@@ -42,7 +42,7 @@ from open_webui.utils.images.comfyui import (
     comfyui_edit_image,
     comfyui_upload_image,
 )
-from open_webui.utils.session_pool import get_session
+from shaheen_ys_ui.utils.session_pool import get_session
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

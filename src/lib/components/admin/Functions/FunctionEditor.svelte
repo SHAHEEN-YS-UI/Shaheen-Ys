@@ -44,9 +44,9 @@
 	let starterType = 'filter';
 	const filterBoilerplate = `"""
 title: Example Filter
-author: open-webui
-author_url: https://github.com/open-webui
-funding_url: https://github.com/open-webui
+author: shaheen-ys-ui
+author_url: https://github.com/shaheen-ys-ui
+funding_url: https://github.com/shaheen-ys-ui
 version: 0.1
 """
 
@@ -112,9 +112,9 @@ class Filter:
 `;
 	const eventBoilerplate = `"""
 title: Example Event
-author: open-webui
-author_url: https://github.com/open-webui
-funding_url: https://github.com/open-webui
+author: shaheen-ys-ui
+author_url: https://github.com/shaheen-ys-ui
+funding_url: https://github.com/shaheen-ys-ui
 version: 0.1
 """
 
@@ -159,7 +159,7 @@ class Event:
 
 	const _boilerplate = `from pydantic import BaseModel
 from typing import Optional, Union, Generator, Iterator
-from open_webui.utils.misc import get_last_user_message
+from shaheen_ys_ui.utils.misc import get_last_user_message
 
 import os
 import requests

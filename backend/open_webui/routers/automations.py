@@ -3,10 +3,10 @@ import logging
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.automations import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.automations import (
     AutomationForm,
     AutomationListResponse,
     AutomationModel,
@@ -15,10 +15,10 @@ from open_webui.models.automations import (
     AutomationRuns,
     Automations,
 )
-from open_webui.models.config import Config
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.automations import (
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.automations import (
     execute_automation,
     next_n_runs_ns,
     next_run_ns,

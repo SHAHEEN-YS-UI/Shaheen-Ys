@@ -4,7 +4,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from fastapi.responses import JSONResponse, RedirectResponse
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     DEFAULT_AUTOCOMPLETE_GENERATION_PROMPT_TEMPLATE,
     DEFAULT_EMOJI_GENERATION_PROMPT_TEMPLATE,
     DEFAULT_FOLLOW_UP_GENERATION_PROMPT_TEMPLATE,
@@ -15,12 +15,12 @@ from open_webui.config import (
     DEFAULT_TITLE_GENERATION_PROMPT_TEMPLATE,
     DEFAULT_VOICE_MODE_PROMPT_TEMPLATE,
 )
-from open_webui.constants import ERROR_MESSAGES, TASKS
-from open_webui.models.config import Config
-from open_webui.routers.pipelines import process_pipeline_inlet_filter
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.chat import generate_chat_completion
-from open_webui.utils.task import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES, TASKS
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.routers.pipelines import process_pipeline_inlet_filter
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.chat import generate_chat_completion
+from shaheen_ys_ui.utils.task import (
     autocomplete_generation_template,
     emoji_generation_template,
     follow_up_generation_template,
@@ -82,7 +82,7 @@ class ActiveChatsForm(BaseModel):
 @router.post('/active/chats')
 async def check_active_chats(request: Request, form_data: ActiveChatsForm, user=Depends(get_verified_user)):
     """Check which chat IDs have active tasks."""
-    from open_webui.tasks import get_active_chat_ids
+    from shaheen_ys_ui.tasks import get_active_chat_ids
 
     active = await get_active_chat_ids(request.app.state.redis, form_data.chat_ids)
     return {'active_chat_ids': active}

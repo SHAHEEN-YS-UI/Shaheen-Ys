@@ -55,7 +55,7 @@ class OpenGaussDialect(PGDialect_psycopg2):
 # Register dialect
 registry.register('opengauss', __name__, 'OpenGaussDialect')
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     OPENGAUSS_DB_URL,
     OPENGAUSS_INITIALIZE_MAX_VECTOR_LENGTH,
     OPENGAUSS_POOL_MAX_OVERFLOW,
@@ -63,14 +63,14 @@ from open_webui.config import (
     OPENGAUSS_POOL_SIZE,
     OPENGAUSS_POOL_TIMEOUT,
 )
-from open_webui.env import SRC_LOG_LEVELS
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.env import SRC_LOG_LEVELS
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 
 VECTOR_LENGTH = OPENGAUSS_INITIALIZE_MAX_VECTOR_LENGTH
 Base = declarative_base()
@@ -92,7 +92,7 @@ class DocumentChunk(Base):
 class OpenGaussClient(VectorDBBase):
     def __init__(self) -> None:
         if not OPENGAUSS_DB_URL:
-            from open_webui.internal.db import ScopedSession
+            from shaheen_ys_ui.internal.db import ScopedSession
 
             self.session = ScopedSession
         else:

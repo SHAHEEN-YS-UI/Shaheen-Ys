@@ -8,7 +8,7 @@ Create Date: 2025-12-10 15:11:39.424601
 
 from typing import Sequence, Union
 
-import open_webui.internal.db
+import shaheen_ys_ui.internal.db
 import sqlalchemy as sa
 from alembic import op
 

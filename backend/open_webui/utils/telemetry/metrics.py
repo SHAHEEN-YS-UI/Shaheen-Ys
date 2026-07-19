@@ -1,4 +1,4 @@
-"""OpenTelemetry metrics bootstrap for Open WebUI.
+"""OpenTelemetry metrics bootstrap for SHAHEEN -YS-UI.
 
 This module initialises a MeterProvider that sends metrics to an OTLP
 collector. The collector is responsible for exposing a Prometheus
@@ -24,7 +24,7 @@ from base64 import b64encode
 from typing import Dict, Iterable, List, Optional
 
 from fastapi import FastAPI, Request
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     OTEL_METRICS_BASIC_AUTH_PASSWORD,
     OTEL_METRICS_BASIC_AUTH_USERNAME,
     OTEL_METRICS_EXPORT_INTERVAL_MILLIS,
@@ -33,7 +33,7 @@ from open_webui.env import (
     OTEL_METRICS_OTLP_SPAN_EXPORTER,
     OTEL_SERVICE_NAME,
 )
-from open_webui.models.users import User
+from shaheen_ys_ui.models.users import User
 from opentelemetry import metrics
 from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import (
     OTLPMetricExporter,

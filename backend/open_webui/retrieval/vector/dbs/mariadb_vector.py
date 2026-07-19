@@ -13,7 +13,7 @@ import sys
 from contextlib import contextmanager
 from typing import Any, Dict, List, Optional, Tuple
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     MARIADB_VECTOR_DB_URL,
     MARIADB_VECTOR_DISTANCE_STRATEGY,
     MARIADB_VECTOR_INDEX_M,
@@ -23,13 +23,13 @@ from open_webui.config import (
     MARIADB_VECTOR_POOL_SIZE,
     MARIADB_VECTOR_POOL_TIMEOUT,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 from sqlalchemy import create_engine
 from sqlalchemy.pool import NullPool, QueuePool
 

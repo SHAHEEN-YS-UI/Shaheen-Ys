@@ -3,11 +3,11 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.concurrency import run_in_threadpool
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.config import Config
-from open_webui.models.feedbacks import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.feedbacks import (
     FeedbackForm,
     FeedbackIdResponse,
     FeedbackListResponse,
@@ -17,8 +17,8 @@ from open_webui.models.feedbacks import (
     ModelHistoryEntry,
     ModelHistoryResponse,
 )
-from open_webui.models.users import UserModel, Users
-from open_webui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.models.users import UserModel, Users
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

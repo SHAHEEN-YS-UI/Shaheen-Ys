@@ -1,7 +1,7 @@
 import logging
 from base64 import b64encode
 
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     OTEL_LOGS_BASIC_AUTH_PASSWORD,
     OTEL_LOGS_BASIC_AUTH_USERNAME,
     OTEL_LOGS_EXPORTER_OTLP_ENDPOINT,

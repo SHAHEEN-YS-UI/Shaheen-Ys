@@ -8,13 +8,13 @@ from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import StreamingResponse
-from open_webui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.chats import (
+from shaheen_ys_ui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.chats import (
     AggregateChatStats,
     ChatBody,
     ChatForm,
@@ -28,17 +28,17 @@ from open_webui.models.chats import (
     ChatUsageStatsListResponse,
     MessageStats,
 )
-from open_webui.models.folders import Folders
-from open_webui.models.shared_chats import SharedChatResponse, SharedChats
-from open_webui.models.tags import TagModel, Tags
-from open_webui.socket.main import get_event_emitter
-from open_webui.tasks import has_active_tasks, stop_item_tasks
-from open_webui.utils.access_control import filter_allowed_access_grants, has_permission
-from open_webui.utils.access_control.folders import has_folder_access
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.context_compaction import compact_chat_branch
-from open_webui.utils.misc import get_message_list
-from open_webui.utils.models import get_all_models
+from shaheen_ys_ui.models.folders import Folders
+from shaheen_ys_ui.models.shared_chats import SharedChatResponse, SharedChats
+from shaheen_ys_ui.models.tags import TagModel, Tags
+from shaheen_ys_ui.socket.main import get_event_emitter
+from shaheen_ys_ui.tasks import has_active_tasks, stop_item_tasks
+from shaheen_ys_ui.utils.access_control import filter_allowed_access_grants, has_permission
+from shaheen_ys_ui.utils.access_control.folders import has_folder_access
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.context_compaction import compact_chat_branch
+from shaheen_ys_ui.utils.misc import get_message_list
+from shaheen_ys_ui.utils.models import get_all_models
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

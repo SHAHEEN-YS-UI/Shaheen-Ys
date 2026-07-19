@@ -6,7 +6,7 @@ from typing import Optional
 
 import aiohttp
 import websockets
-from open_webui.env import AIOHTTP_CLIENT_ALLOW_REDIRECTS
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_ALLOW_REDIRECTS
 from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)

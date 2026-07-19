@@ -4,8 +4,8 @@ import re
 import time
 from typing import Any, Optional
 
-from open_webui.models.config import Config
-from open_webui.models.knowledge import KnowledgeModel
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.knowledge import KnowledgeModel
 
 log = logging.getLogger(__name__)
 

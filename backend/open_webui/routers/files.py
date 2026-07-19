@@ -22,30 +22,30 @@ from fastapi import (
     status,
 )
 from fastapi.responses import FileResponse, StreamingResponse
-from open_webui.config import BYPASS_ADMIN_ACCESS_CONTROL, STORAGE_LOCAL_CACHE, STORAGE_PROVIDER, UPLOAD_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_db_context, get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.channels import Channels
-from open_webui.models.config import Config
-from open_webui.models.chats import Chats
-from open_webui.models.files import (
+from shaheen_ys_ui.config import BYPASS_ADMIN_ACCESS_CONTROL, STORAGE_LOCAL_CACHE, STORAGE_PROVIDER, UPLOAD_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_db_context, get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.channels import Channels
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.files import (
     FileForm,
     FileListResponse,
     FileModel,
     FileModelResponse,
     Files,
 )
-from open_webui.models.groups import Groups
-from open_webui.models.knowledge import Knowledges
-from open_webui.models.users import Users
-from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-from open_webui.routers.audio import transcribe
-from open_webui.routers.retrieval import ProcessFileForm, process_file
-from open_webui.storage.provider import Storage
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.misc import strict_match_mime_type
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.knowledge import Knowledges
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+from shaheen_ys_ui.routers.audio import transcribe
+from shaheen_ys_ui.routers.retrieval import ProcessFileForm, process_file
+from shaheen_ys_ui.storage.provider import Storage
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.misc import strict_match_mime_type
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -54,7 +54,7 @@ log = logging.getLogger(__name__)
 router = APIRouter()
 
 
-from open_webui.utils.access_control.files import has_access_to_file
+from shaheen_ys_ui.utils.access_control.files import has_access_to_file
 
 ############################
 # Upload File

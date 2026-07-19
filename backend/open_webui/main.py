@@ -40,7 +40,7 @@ from starsessions import (
 )
 from starsessions.stores.redis import RedisStore
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     BYPASS_ADMIN_ACCESS_CONTROL,
     CACHE_DIR,
     CORS_ALLOW_ORIGIN,
@@ -70,8 +70,8 @@ from open_webui.config import (
     import_legacy_config_json,
     seed_registered_defaults,
 )
-from open_webui.constants import ERROR_MESSAGES, TASKS
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES, TASKS
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     AUDIT_EXCLUDED_PATHS,
     AUDIT_INCLUDED_PATHS,
@@ -117,7 +117,7 @@ from open_webui.env import (
     WEBUI_SESSION_COOKIE_SAME_SITE,
     WEBUI_SESSION_COOKIE_SECURE,
 )
-from open_webui.events import (
+from shaheen_ys_ui.events import (
     EVENTS,
     delete_event_webhook,
     get_event_catalog as get_event_catalog_items,
@@ -126,16 +126,16 @@ from open_webui.events import (
     publish_event,
     upsert_event_webhook,
 )
-from open_webui.internal.db import engine, get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.channels import Channels
-from open_webui.models.chats import ChatForm, Chats
-from open_webui.models.config import Config
-from open_webui.models.functions import Functions
-from open_webui.models.messages import Messages
-from open_webui.models.models import Models
-from open_webui.models.users import Users
-from open_webui.routers import (
+from shaheen_ys_ui.internal.db import engine, get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.channels import Channels
+from shaheen_ys_ui.models.chats import ChatForm, Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.functions import Functions
+from shaheen_ys_ui.models.messages import Messages
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.routers import (
     analytics,
     audio,
     auths,
@@ -167,13 +167,13 @@ from open_webui.routers import (
     users,
     utils,
 )
-from open_webui.routers.retrieval import (
+from shaheen_ys_ui.routers.retrieval import (
     get_ef,
     get_embedding_function,
     get_reranking_function,
     get_rf,
 )
-from open_webui.socket.main import (
+from shaheen_ys_ui.socket.main import (
     MODELS,
     get_event_emitter,
     get_models_in_use,
@@ -181,10 +181,10 @@ from open_webui.socket.main import (
     periodic_session_pool_cleanup,
     periodic_usage_pool_cleanup,
 )
-from open_webui.socket.main import (
+from shaheen_ys_ui.socket.main import (
     app as socket_app,
 )
-from open_webui.tasks import (
+from shaheen_ys_ui.tasks import (
     cleanup_task,
     create_task,
     has_active_tasks,
@@ -194,17 +194,17 @@ from open_webui.tasks import (
     stop_item_tasks,
     stop_task,
 )  # Import from tasks.py
-from open_webui.utils import logger
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.actions import chat_action as chat_action_handler
-from open_webui.utils.asgi_middleware import (
+from shaheen_ys_ui.utils import logger
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.actions import chat_action as chat_action_handler
+from shaheen_ys_ui.utils.asgi_middleware import (
     AuthTokenMiddleware,
     CommitSessionMiddleware,
     RedirectMiddleware,
     WebsocketUpgradeGuardMiddleware,
 )
-from open_webui.utils.audit import AuditLevel, AuditLoggingMiddleware
-from open_webui.utils.auth import (
+from shaheen_ys_ui.utils.audit import AuditLevel, AuditLoggingMiddleware
+from shaheen_ys_ui.utils.auth import (
     create_admin_user,
     decode_token,
     get_admin_user,
@@ -212,27 +212,27 @@ from open_webui.utils.auth import (
     get_license_data,
     get_verified_user,
 )
-from open_webui.utils.chat import (
+from shaheen_ys_ui.utils.chat import (
     chat_completed as chat_completed_handler,
 )
-from open_webui.utils.chat import (
+from shaheen_ys_ui.utils.chat import (
     generate_chat_completion as chat_completion_handler,
 )
-from open_webui.utils.embeddings import generate_embeddings
-from open_webui.utils.logger import start_logger
-from open_webui.utils.middleware import (
+from shaheen_ys_ui.utils.embeddings import generate_embeddings
+from shaheen_ys_ui.utils.logger import start_logger
+from shaheen_ys_ui.utils.middleware import (
     background_tasks_handler,
     build_chat_response_context,
     process_chat_payload,
     process_chat_response,
 )
-from open_webui.utils.models import (
+from shaheen_ys_ui.utils.models import (
     check_model_access,
     get_all_base_models,
     get_all_models,
     get_filtered_models,
 )
-from open_webui.utils.oauth import (
+from shaheen_ys_ui.utils.oauth import (
     OAuthClientInformationFull,
     OAuthClientManager,
     OAuthManager,
@@ -244,11 +244,11 @@ from open_webui.utils.oauth import (
     recover_static_oauth_client_metadata,
     resolve_oauth_client_info,
 )
-from open_webui.utils.plugin import install_tool_and_function_dependencies
-from open_webui.utils.redis import get_redis_client
-from open_webui.utils.security_headers import SecurityHeadersMiddleware
-from open_webui.utils.session_pool import get_session
-from open_webui.utils.tools import set_terminal_servers, set_tool_servers
+from shaheen_ys_ui.utils.plugin import install_tool_and_function_dependencies
+from shaheen_ys_ui.utils.redis import get_redis_client
+from shaheen_ys_ui.utils.security_headers import SecurityHeadersMiddleware
+from shaheen_ys_ui.utils.session_pool import get_session
+from shaheen_ys_ui.utils.tools import set_terminal_servers, set_tool_servers
 
 if SAFE_MODE:
     print('SAFE MODE ENABLED')
@@ -292,13 +292,13 @@ if LOG_FORMAT != 'json':
 
 v{VERSION} - building the best AI user interface.
 {f'Commit: {WEBUI_BUILD_HASH}' if WEBUI_BUILD_HASH != 'dev-build' else ''}
-https://github.com/open-webui/open-webui
+https://github.com/shaheen-ys-ui/shaheen-ys-ui
 """
     try:
         print(banner)
     except UnicodeEncodeError:
         # Stdout can't encode the box-drawing banner (Windows cp1252, redirected/headless stdout); fall back to ASCII.
-        print(f'Open WebUI v{VERSION} - building the best AI user interface.\nhttps://github.com/open-webui/open-webui')
+        print(f'SHAHEEN -YS-UI v{VERSION} - building the best AI user interface.\nhttps://github.com/shaheen-ys-ui/shaheen-ys-ui')
 
 
 @asynccontextmanager
@@ -348,7 +348,7 @@ async def lifespan(app: FastAPI):
     asyncio.create_task(periodic_usage_pool_cleanup())
     asyncio.create_task(periodic_session_pool_cleanup())
 
-    from open_webui.utils.automations import scheduler_worker_loop
+    from shaheen_ys_ui.utils.automations import scheduler_worker_loop
 
     asyncio.create_task(scheduler_worker_loop(app))
 
@@ -416,7 +416,7 @@ async def lifespan(app: FastAPI):
     await publish_event(app, EVENTS.SYSTEM_SHUTDOWN_STARTED, source='system')
 
     # Shutdown: clean up shared resources
-    from open_webui.utils.session_pool import close_session
+    from shaheen_ys_ui.utils.session_pool import close_session
 
     await close_session()
 
@@ -427,7 +427,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title='Open WebUI',
+    title='SHAHEEN -YS-UI',
     docs_url='/docs' if ENV == 'dev' else None,
     openapi_url='/openapi.json' if ENV == 'dev' else None,
     redoc_url=None,
@@ -437,7 +437,7 @@ app = FastAPI(
 # Used by readiness checks to gate traffic until startup work is done.
 app.state.startup_complete = False
 
-# For Open WebUI OIDC/OAuth2
+# For SHAHEEN -YS-UI OIDC/OAuth2
 oauth_manager = OAuthManager(app)
 app.state.oauth_manager = oauth_manager
 
@@ -461,7 +461,7 @@ app.state.EXTERNAL_PWA_MANIFEST_URL = EXTERNAL_PWA_MANIFEST_URL
 ########################################
 
 if ENABLE_OTEL:
-    from open_webui.utils.telemetry.setup import setup as setup_opentelemetry
+    from shaheen_ys_ui.utils.telemetry.setup import setup as setup_opentelemetry
 
     setup_opentelemetry(app=app, db_engine=engine)
 
@@ -533,7 +533,7 @@ app.state.BASE_MODELS = []
 
 async def initialize_runtime_config(app: FastAPI):
     # Migrate legacy access_control → access_grants on boot.
-    from open_webui.utils.access_control import migrate_access_control
+    from shaheen_ys_ui.utils.access_control import migrate_access_control
 
     connections = await Config.get('tool_server.connections', []) or []
     if any('access_control' in c.get('config', {}) for c in connections):
@@ -708,7 +708,7 @@ if ENABLE_COMPRESSION_MIDDLEWARE:
 # response completion — which surfaced as noisy SQLAlchemy
 # `terminate_force_close` tracebacks under aiosqlite and as random
 # CancelledError storms across the request path. See
-# `open_webui.utils.asgi_middleware` for the rationale.
+# `shaheen_ys_ui.utils.asgi_middleware` for the rationale.
 app.add_middleware(RedirectMiddleware)
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(CommitSessionMiddleware)
@@ -1676,7 +1676,7 @@ app.state.CHAT_COMPLETION_HANDLER = chat_completion
 ##################################
 
 
-from open_webui.utils.anthropic import (
+from shaheen_ys_ui.utils.anthropic import (
     convert_anthropic_to_openai_payload,
     convert_openai_to_anthropic_response,
     openai_stream_to_anthropic_stream,
@@ -1698,7 +1698,7 @@ async def generate_messages(
     pipeline, then converts the response back to Anthropic Messages format.
 
     Supports both streaming and non-streaming requests.
-    All models configured in Open WebUI are accessible via this endpoint.
+    All models configured in SHAHEEN -YS-UI are accessible via this endpoint.
 
     Authentication: Supports both standard Authorization header and
     Anthropic's x-api-key header (via middleware translation).
@@ -2172,7 +2172,7 @@ async def get_app_latest_release_version(user=Depends(get_verified_user)):
         timeout = aiohttp.ClientTimeout(total=1)
         async with aiohttp.ClientSession(timeout=timeout, trust_env=True) as session:
             async with session.get(
-                'https://api.github.com/repos/open-webui/open-webui/releases/latest',
+                'https://api.github.com/repos/shaheen-ys-ui/shaheen-ys-ui/releases/latest',
                 ssl=AIOHTTP_CLIENT_SESSION_SSL,
             ) as response:
                 response.raise_for_status()
@@ -2193,7 +2193,7 @@ async def get_app_changelog():
 @app.get('/api/usage')
 async def get_current_usage(user=Depends(get_verified_user)):
     """
-    Get current usage statistics for Open WebUI.
+    Get current usage statistics for SHAHEEN -YS-UI.
     This is an experimental endpoint and subject to change.
     """
     try:

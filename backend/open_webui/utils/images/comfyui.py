@@ -5,8 +5,8 @@ import urllib.parse
 from typing import Optional
 
 import aiohttp
-from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL
-from open_webui.utils.session_pool import get_session
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL
+from shaheen_ys_ui.utils.session_pool import get_session
 from pydantic import BaseModel
 
 log = logging.getLogger(__name__)

@@ -3,9 +3,9 @@ from typing import List, Optional
 
 import requests
 from fastapi import Request
-from open_webui.env import FORWARD_SESSION_INFO_HEADER_CHAT_ID
-from open_webui.retrieval.web.main import SearchResult, get_filtered_results
-from open_webui.utils.headers import include_user_info_headers
+from shaheen_ys_ui.env import FORWARD_SESSION_INFO_HEADER_CHAT_ID
+from shaheen_ys_ui.retrieval.web.main import SearchResult, get_filtered_results
+from shaheen_ys_ui.utils.headers import include_user_info_headers
 
 log = logging.getLogger(__name__)
 
@@ -21,7 +21,7 @@ def search_external(
 ) -> List[SearchResult]:
     try:
         headers = {
-            'User-Agent': 'Open WebUI (https://github.com/open-webui/open-webui) RAG Bot',
+            'User-Agent': 'SHAHEEN -YS-UI (https://github.com/shaheen-ys-ui/shaheen-ys-ui) RAG Bot',
             'Authorization': f'Bearer {external_api_key}',
         }
         headers = include_user_info_headers(headers, user)

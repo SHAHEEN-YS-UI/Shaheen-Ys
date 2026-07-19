@@ -4,7 +4,7 @@ from typing import Any, Optional
 from urllib.parse import quote
 
 import jwt
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     FORWARD_USER_INFO_HEADER_JWT,
     FORWARD_USER_INFO_HEADER_JWT_EXPIRES_SECONDS,
     FORWARD_USER_INFO_HEADER_JWT_SECRET,
@@ -24,7 +24,7 @@ def _mint_forward_user_jwt(user: Any) -> str:
         'email': str(user.email),
         'name': str(user.name),
         'role': str(user.role),
-        'iss': 'open-webui',
+        'iss': 'shaheen-ys-ui',
         'iat': now,
         'exp': now + FORWARD_USER_INFO_HEADER_JWT_EXPIRES_SECONDS,
     }

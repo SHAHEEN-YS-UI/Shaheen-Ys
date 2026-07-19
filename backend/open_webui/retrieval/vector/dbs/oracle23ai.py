@@ -38,7 +38,7 @@ from decimal import Decimal
 from typing import Any, Dict, List, Optional, Union
 
 import oracledb
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     ORACLE_DB_DSN,
     ORACLE_DB_PASSWORD,
     ORACLE_DB_POOL_INCREMENT,
@@ -50,7 +50,7 @@ from open_webui.config import (
     ORACLE_WALLET_DIR,
     ORACLE_WALLET_PASSWORD,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,

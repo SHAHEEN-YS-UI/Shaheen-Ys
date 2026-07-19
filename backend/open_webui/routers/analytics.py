@@ -4,13 +4,13 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
-from open_webui.internal.db import get_async_session
-from open_webui.models.chat_messages import ChatMessageModel, ChatMessages
-from open_webui.models.chats import Chats
-from open_webui.models.feedbacks import Feedbacks
-from open_webui.models.groups import Groups
-from open_webui.models.users import Users
-from open_webui.utils.auth import get_admin_user
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.chat_messages import ChatMessageModel, ChatMessages
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.feedbacks import Feedbacks
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.utils.auth import get_admin_user
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

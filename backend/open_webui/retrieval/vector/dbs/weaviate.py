@@ -7,7 +7,7 @@ import uuid
 from typing import Any, Dict, List, Optional, Union
 
 import weaviate
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     WEAVIATE_API_KEY,
     WEAVIATE_GRPC_HOST,
     WEAVIATE_GRPC_PORT,
@@ -17,13 +17,13 @@ from open_webui.config import (
     WEAVIATE_HTTP_SECURE,
     WEAVIATE_SKIP_INIT_CHECKS,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 
 
 def _convert_uuids_to_strings(obj: Any) -> Any:

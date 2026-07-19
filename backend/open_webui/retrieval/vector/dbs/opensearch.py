@@ -4,27 +4,27 @@ NOTE: This vector database integration is community-supported and maintained on 
 
 from typing import Optional
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     OPENSEARCH_CERT_VERIFY,
     OPENSEARCH_PASSWORD,
     OPENSEARCH_SSL,
     OPENSEARCH_URI,
     OPENSEARCH_USERNAME,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 from opensearchpy import OpenSearch
 from opensearchpy.helpers import bulk
 
 
 class OpenSearchClient(VectorDBBase):
     def __init__(self):
-        self.index_prefix = 'open_webui'
+        self.index_prefix = 'shaheen_ys_ui'
         self.client = OpenSearch(
             hosts=[OPENSEARCH_URI],
             use_ssl=OPENSEARCH_SSL,

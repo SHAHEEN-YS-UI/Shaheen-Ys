@@ -12,7 +12,7 @@ the inner task. That `CancelledError` then propagates into whatever
 the inner task was doing, including in-flight DB queries, embedding
 calls and disk I/O.
 
-In Open WebUI this surfaces as:
+In SHAHEEN -YS-UI this surfaces as:
 
 * SQLAlchemy logging multi-page `NotImplementedError:
   terminate_force_close()` tracebacks at ERROR every time a request is
@@ -37,10 +37,10 @@ from urllib.parse import parse_qs, urlencode
 
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.security import HTTPAuthorizationCredentials
-from open_webui.env import CUSTOM_API_KEY_HEADER
-from open_webui.internal.db import ScopedSession
-from open_webui.models.config import Config
-from open_webui.utils.auth import get_http_authorization_cred
+from shaheen_ys_ui.env import CUSTOM_API_KEY_HEADER
+from shaheen_ys_ui.internal.db import ScopedSession
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.utils.auth import get_http_authorization_cred
 from starlette.datastructures import MutableHeaders
 from starlette.requests import Request
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
@@ -132,7 +132,7 @@ class AuthTokenMiddleware:
 
     The header used for API-key transport is controlled by the
     ``CUSTOM_API_KEY_HEADER`` environment variable (default ``x-api-key``).
-    This is useful when Open WebUI sits behind a reverse proxy that
+    This is useful when SHAHEEN -YS-UI sits behind a reverse proxy that
     consumes the ``Authorization`` header for its own authentication —
     set the env var to a unique header (e.g. ``X-OpenWebUI-Key``) so
     the middleware checks that instead and avoids the 401 short-circuit.
@@ -246,7 +246,7 @@ class RedirectMiddleware:
                     # Local import: youtube loader pulls heavy deps and is
                     # only needed when a share-target actually contains a
                     # YouTube URL.
-                    from open_webui.retrieval.loaders.youtube import _parse_video_id
+                    from shaheen_ys_ui.retrieval.loaders.youtube import _parse_video_id
 
                     youtube_video_id = _parse_video_id(url_match[0])
                     if youtube_video_id:

@@ -100,7 +100,7 @@
 
 									{#if $config?.features?.enable_version_update_check}
 										<a
-											href="https://github.com/open-webui/open-webui/releases/tag/v{version.latest}"
+											href="https://github.com/shaheen-ys-ui/shaheen-ys-ui/releases/tag/v{version.latest}"
 											target="_blank"
 										>
 											{updateAvailable === null
@@ -144,7 +144,7 @@
 									{$i18n.t('Help')}
 								</div>
 								<div class=" text-xs text-gray-500">
-									{$i18n.t('Discover how to use Open WebUI and seek support from the community.')}
+									{$i18n.t('Discover how to use SHAHEEN -YS-UI and seek support from the community.')}
 								</div>
 							</div>
 
@@ -173,10 +173,10 @@
 									/>
 								</a>
 
-								<a href="https://github.com/open-webui/open-webui" target="_blank">
+								<a href="https://github.com/shaheen-ys-ui/shaheen-ys-ui" target="_blank">
 									<img
 										alt="Github Repo"
-										src="https://img.shields.io/github/stars/open-webui/open-webui?style=social&label=Star us on Github"
+										src="https://img.shields.io/github/stars/shaheen-ys-ui/shaheen-ys-ui?style=social&label=Star us on Github"
 									/>
 								</a>
 							</div>

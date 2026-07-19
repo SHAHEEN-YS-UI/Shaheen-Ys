@@ -4,7 +4,7 @@ from typing import Optional
 import chromadb
 from chromadb import Settings
 from chromadb.utils.batch_utils import create_batches
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CHROMA_CLIENT_AUTH_CREDENTIALS,
     CHROMA_CLIENT_AUTH_PROVIDER,
     CHROMA_DATA_PATH,
@@ -15,13 +15,13 @@ from open_webui.config import (
     CHROMA_HTTP_SSL,
     CHROMA_TENANT,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 
 log = logging.getLogger(__name__)
 

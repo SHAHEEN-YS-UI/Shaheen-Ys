@@ -8,7 +8,7 @@ from uuid import uuid4
 from fastapi import Request
 from redis.asyncio import Redis
 
-from open_webui.env import REDIS_KEY_PREFIX
+from shaheen_ys_ui.env import REDIS_KEY_PREFIX
 
 log = logging.getLogger(__name__)
 

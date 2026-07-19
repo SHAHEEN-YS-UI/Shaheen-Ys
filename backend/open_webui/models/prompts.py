@@ -10,11 +10,11 @@ from typing import Optional
 
 log = logging.getLogger(__name__)
 
-from open_webui.internal.db import Base, JSONField, get_async_db_context
-from open_webui.models.access_grants import AccessGrantModel, AccessGrants
-from open_webui.models.groups import Groups
-from open_webui.models.prompt_history import PromptHistories
-from open_webui.models.users import User, UserModel, UserResponse, Users
+from shaheen_ys_ui.internal.db import Base, JSONField, get_async_db_context
+from shaheen_ys_ui.models.access_grants import AccessGrantModel, AccessGrants
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.prompt_history import PromptHistories
+from shaheen_ys_ui.models.users import User, UserModel, UserResponse, Users
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import JSON, BigInteger, Boolean, Column, String, Text, cast, delete, func, or_, select, text, update
 from sqlalchemy.ext.asyncio import AsyncSession

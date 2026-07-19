@@ -6,14 +6,14 @@ from typing import Optional
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from fastapi.responses import FileResponse, Response, StreamingResponse
-from open_webui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.env import STATIC_DIR
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants, has_public_read_access_grant, has_public_write_access_grant
-from open_webui.models.config import Config
-from open_webui.models.channels import (
+from shaheen_ys_ui.config import ENABLE_ADMIN_CHAT_ACCESS, ENABLE_ADMIN_EXPORT
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.env import STATIC_DIR
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants, has_public_read_access_grant, has_public_write_access_grant
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.channels import (
     ChannelForm,
     ChannelModel,
     ChannelResponse,
@@ -22,36 +22,36 @@ from open_webui.models.channels import (
     ChannelWebhookModel,
     CreateChannelForm,
 )
-from open_webui.models.groups import Groups
-from open_webui.models.messages import (
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.messages import (
     MessageForm,
     MessageModel,
     MessageResponse,
     Messages,
     MessageWithReactionsResponse,
 )
-from open_webui.models.users import (
+from shaheen_ys_ui.models.users import (
     UserIdNameResponse,
     UserIdNameStatusResponse,
     UserModel,
     UserNameResponse,
     Users,
 )
-from open_webui.socket.main import (
+from shaheen_ys_ui.socket.main import (
     emit_to_users,
     enter_room_for_users,
     get_user_ids_from_room,
     sio,
 )
-from open_webui.utils.access_control import filter_allowed_access_grants, has_permission
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.channels import extract_mentions, replace_mentions
-from open_webui.utils.files import get_image_base64_from_file_id
-from open_webui.utils.models import (
+from shaheen_ys_ui.utils.access_control import filter_allowed_access_grants, has_permission
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.channels import extract_mentions, replace_mentions
+from shaheen_ys_ui.utils.files import get_image_base64_from_file_id
+from shaheen_ys_ui.utils.models import (
     get_all_models,
     get_filtered_models,
 )
-from open_webui.utils.webhook import post_webhook
+from shaheen_ys_ui.utils.webhook import post_webhook
 from pydantic import BaseModel, field_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -1064,7 +1064,7 @@ async def model_response_handler(request, channel, message, user, db=None):
                     ]
 
                 # Resolve model config (same helpers automations use)
-                from open_webui.utils.automations import (
+                from shaheen_ys_ui.utils.automations import (
                     _resolve_model_features,
                     _resolve_model_filter_ids,
                     _resolve_model_tool_ids,

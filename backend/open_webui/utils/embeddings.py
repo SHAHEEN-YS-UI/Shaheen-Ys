@@ -3,19 +3,19 @@ import random
 import sys
 
 from fastapi import Request
-from open_webui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
-from open_webui.models.models import Models
-from open_webui.models.users import UserModel
-from open_webui.routers.ollama import (
+from shaheen_ys_ui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.routers.ollama import (
     GenerateEmbedForm,
 )
-from open_webui.routers.ollama import (
+from shaheen_ys_ui.routers.ollama import (
     embed as ollama_embed,
 )
-from open_webui.routers.openai import embeddings as openai_embeddings
-from open_webui.utils.models import check_model_access
-from open_webui.utils.payload import convert_embed_payload_openai_to_ollama
-from open_webui.utils.response import convert_embedding_response_ollama_to_openai
+from shaheen_ys_ui.routers.openai import embeddings as openai_embeddings
+from shaheen_ys_ui.utils.models import check_model_access
+from shaheen_ys_ui.utils.payload import convert_embed_payload_openai_to_ollama
+from shaheen_ys_ui.utils.response import convert_embedding_response_ollama_to_openai
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)

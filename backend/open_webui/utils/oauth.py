@@ -32,7 +32,7 @@ from mcp.shared.auth import (
 from mcp.shared.auth import (
     OAuthMetadata,
 )
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     DEFAULT_USER_ROLE,
     ENABLE_OAUTH_GROUP_CREATION,
     ENABLE_OAUTH_GROUP_MANAGEMENT,
@@ -64,9 +64,9 @@ from open_webui.config import (
     OAUTH_USERNAME_CLAIM,
     WEBHOOK_URL,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_ALLOW_REDIRECTS,
     AIOHTTP_CLIENT_SESSION_SSL,
     ENABLE_OAUTH_EMAIL_FALLBACK,
@@ -77,16 +77,16 @@ from open_webui.env import (
     WEBUI_AUTH_COOKIE_SAME_SITE,
     WEBUI_AUTH_COOKIE_SECURE,
 )
-from open_webui.models.auths import Auths
-from open_webui.models.config import Config
-from open_webui.models.groups import GroupForm, GroupModel, Groups, GroupUpdateForm
-from open_webui.models.oauth_sessions import OAuthSessions
-from open_webui.models.users import Users
-from open_webui.retrieval.web.utils import validate_url
-from open_webui.utils.auth import create_token, get_password_hash
-from open_webui.utils.groups import apply_default_group_assignment
-from open_webui.utils.misc import parse_duration
-from open_webui.utils.validate import validate_profile_image_url
+from shaheen_ys_ui.models.auths import Auths
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import GroupForm, GroupModel, Groups, GroupUpdateForm
+from shaheen_ys_ui.models.oauth_sessions import OAuthSessions
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.retrieval.web.utils import validate_url
+from shaheen_ys_ui.utils.auth import create_token, get_password_hash
+from shaheen_ys_ui.utils.groups import apply_default_group_assignment
+from shaheen_ys_ui.utils.misc import parse_duration
+from shaheen_ys_ui.utils.validate import validate_profile_image_url
 from starlette.responses import RedirectResponse
 
 
@@ -111,7 +111,7 @@ class OAuthClientInformationFull(OAuthClientMetadata):
     server_metadata: Optional[OAuthMetadata] = None  # Fetched from the OAuth server
 
 
-from open_webui.env import GLOBAL_LOG_LEVEL
+from shaheen_ys_ui.env import GLOBAL_LOG_LEVEL
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)
@@ -486,7 +486,7 @@ async def get_oauth_client_info_with_dynamic_client_registration(
         redirect_base_url = (str(webui_url or request.base_url)).rstrip('/')
 
         oauth_client_metadata = OAuthClientMetadata(
-            client_name='Open WebUI',
+            client_name='SHAHEEN -YS-UI',
             redirect_uris=[f'{redirect_base_url}/oauth/clients/{client_id}/callback'],
             grant_types=['authorization_code', 'refresh_token'],
             response_types=['code'],

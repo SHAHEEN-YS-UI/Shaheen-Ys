@@ -5,22 +5,22 @@ import sys
 
 from aiocache import cached
 from fastapi import Request
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     BYPASS_ADMIN_ACCESS_CONTROL,
     DEFAULT_ARENA_MODEL,
 )
-from open_webui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
-from open_webui.functions import get_function_models
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.functions import Functions
-from open_webui.models.groups import Groups
-from open_webui.models.models import Models
-from open_webui.models.users import UserModel
-from open_webui.routers import ollama, openai
-from open_webui.socket.utils import RedisDict
-from open_webui.utils.access_control import has_access, has_base_model_access
-from open_webui.utils.plugin import (
+from shaheen_ys_ui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
+from shaheen_ys_ui.functions import get_function_models
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.functions import Functions
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.routers import ollama, openai
+from shaheen_ys_ui.socket.utils import RedisDict
+from shaheen_ys_ui.utils.access_control import has_access, has_base_model_access
+from shaheen_ys_ui.utils.plugin import (
     get_functions_cache,
     get_function_module_from_cache,
 )

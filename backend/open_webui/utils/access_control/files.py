@@ -1,13 +1,13 @@
 import logging
 
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.channels import Channels
-from open_webui.models.chats import Chats
-from open_webui.models.files import Files
-from open_webui.models.groups import Groups
-from open_webui.models.knowledge import Knowledges
-from open_webui.models.models import Models
-from open_webui.models.users import UserModel
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.channels import Channels
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.files import Files
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.knowledge import Knowledges
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import UserModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
 log = logging.getLogger(__name__)

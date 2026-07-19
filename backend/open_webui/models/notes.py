@@ -4,10 +4,10 @@ import uuid
 from functools import lru_cache
 from typing import Optional
 
-from open_webui.internal.db import Base, get_async_db_context
-from open_webui.models.access_grants import AccessGrantModel, AccessGrants
-from open_webui.models.groups import Groups
-from open_webui.models.users import User, UserModel, UserResponse, Users
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.models.access_grants import AccessGrantModel, AccessGrants
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.users import User, UserModel, UserResponse, Users
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import JSON, BigInteger, Boolean, Column, ForeignKey, Text, delete, func, or_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession

@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 import requests
-from open_webui.retrieval.web.main import SearchResult
+from shaheen_ys_ui.retrieval.web.main import SearchResult
 from yarl import URL
 
 log = logging.getLogger(__name__)

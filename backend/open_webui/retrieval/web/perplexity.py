@@ -2,8 +2,8 @@ import logging
 from typing import Literal, Optional
 
 import requests
-from open_webui.env import VERSION
-from open_webui.retrieval.web.main import SearchResult, get_filtered_results
+from shaheen_ys_ui.env import VERSION
+from shaheen_ys_ui.retrieval.web.main import SearchResult, get_filtered_results
 
 MODELS = Literal[
     'sonar',
@@ -63,7 +63,7 @@ def search_perplexity(
         headers = {
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'X-Pplx-Integration': f'open-webui/{VERSION}',
+            'X-Pplx-Integration': f'shaheen-ys-ui/{VERSION}',
         }
 
         # Make the API request

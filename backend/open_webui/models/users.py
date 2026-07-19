@@ -5,10 +5,10 @@ from __future__ import annotations
 import datetime
 import time
 from typing import Optional
-from open_webui.env import DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL
-from open_webui.internal.db import Base, JSONField, get_async_db_context
-from open_webui.utils.misc import throttle
-from open_webui.utils.validate import validate_profile_image_url
+from shaheen_ys_ui.env import DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL
+from shaheen_ys_ui.internal.db import Base, JSONField, get_async_db_context
+from shaheen_ys_ui.utils.misc import throttle
+from shaheen_ys_ui.utils.validate import validate_profile_image_url
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 from sqlalchemy import (
     JSON,
@@ -396,8 +396,8 @@ class UsersTable:
         """Paginated user listing with optional filters for role, group, and channel."""
         async with get_async_db_context(db) as session:
             # Deferred imports to avoid circular dependencies
-            from open_webui.models.channels import ChannelMember
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.channels import ChannelMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             # Join GroupMember so we can order by group_id when requested
             stmt = select(User)
@@ -533,7 +533,7 @@ class UsersTable:
 
     async def get_users_by_group_id(self, group_id: str, db: AsyncSession | None = None) -> list[UserModel]:
         async with get_async_db_context(db) as session:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             result = await session.execute(
                 select(User).join(GroupMember, User.id == GroupMember.user_id).filter(GroupMember.group_id == group_id)
@@ -692,8 +692,8 @@ class UsersTable:
             return UserModel.model_validate(user)
 
     async def delete_user_by_id(self, id: str, db: AsyncSession | None = None) -> bool:
-        from open_webui.models.chats import Chats
-        from open_webui.models.groups import Groups
+        from shaheen_ys_ui.models.chats import Chats
+        from shaheen_ys_ui.models.groups import Groups
 
         # Remove User from Groups
         await Groups.remove_user_from_all_groups(id)

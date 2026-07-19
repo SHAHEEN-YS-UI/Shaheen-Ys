@@ -17,17 +17,17 @@ from langchain_community.document_loaders import (
     YoutubeLoader,
 )
 from langchain_core.documents import Document
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     GLOBAL_LOG_LEVEL,
     MINERU_MAX_MARKDOWN_BYTES,
     REQUESTS_VERIFY,
 )
-from open_webui.retrieval.loaders.datalab_marker import DatalabMarkerLoader
-from open_webui.retrieval.loaders.external_document import ExternalDocumentLoader
-from open_webui.retrieval.loaders.mineru import MinerULoader
-from open_webui.retrieval.loaders.mistral import MistralLoader
-from open_webui.retrieval.loaders.paddleocr_vl import PaddleOCRVLLoader
+from shaheen_ys_ui.retrieval.loaders.datalab_marker import DatalabMarkerLoader
+from shaheen_ys_ui.retrieval.loaders.external_document import ExternalDocumentLoader
+from shaheen_ys_ui.retrieval.loaders.mineru import MinerULoader
+from shaheen_ys_ui.retrieval.loaders.mistral import MistralLoader
+from shaheen_ys_ui.retrieval.loaders.paddleocr_vl import PaddleOCRVLLoader
 
 logging.basicConfig(stream=sys.stdout, level=GLOBAL_LOG_LEVEL)
 log = logging.getLogger(__name__)
@@ -465,7 +465,7 @@ class Loader:
         ):
             api_base_url = self.kwargs.get('DATALAB_MARKER_API_BASE_URL', '')
             if not api_base_url or api_base_url.strip() == '':
-                api_base_url = 'https://www.datalab.to/api/v1/marker'  # https://github.com/open-webui/open-webui/pull/16867#issuecomment-3218424349
+                api_base_url = 'https://www.datalab.to/api/v1/marker'  # https://github.com/shaheen-ys-ui/shaheen-ys-ui/pull/16867#issuecomment-3218424349
 
             loader = DatalabMarkerLoader(
                 file_path=file_path,

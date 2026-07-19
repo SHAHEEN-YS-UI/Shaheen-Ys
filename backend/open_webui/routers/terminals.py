@@ -12,15 +12,15 @@ from urllib.parse import unquote
 import aiohttp
 from fastapi import APIRouter, Depends, Request, Response, WebSocket
 from fastapi.responses import JSONResponse, StreamingResponse
-from open_webui.config import TERMINAL_PROXY_HEADERS
-from open_webui.events import EVENTS, publish_event
-from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.users import Users
-from open_webui.utils.access_control import has_connection_access
-from open_webui.utils.auth import get_verified_user
-from open_webui.utils.tools import bearer_auth_header, normalize_bearer_token
+from shaheen_ys_ui.config import TERMINAL_PROXY_HEADERS
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.utils.access_control import has_connection_access
+from shaheen_ys_ui.utils.auth import get_verified_user
+from shaheen_ys_ui.utils.tools import bearer_auth_header, normalize_bearer_token
 from starlette.background import BackgroundTask
 
 log = logging.getLogger(__name__)
@@ -212,7 +212,7 @@ async def _resolve_authenticated_connection(ws: WebSocket, server_id: str):
     import asyncio
     import json
 
-    from open_webui.utils.auth import decode_token, is_valid_token
+    from shaheen_ys_ui.utils.auth import decode_token, is_valid_token
 
     # First-message authentication
     try:

@@ -19,13 +19,13 @@ from langchain_classic.retrievers import (
 )
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     RAG_EMBEDDING_CONTENT_PREFIX,
     RAG_EMBEDDING_PREFIX_FIELD_NAME,
     RAG_EMBEDDING_QUERY_PREFIX,
     VECTOR_DB,
 )
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_ALLOW_REDIRECTS,
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,
@@ -34,22 +34,22 @@ from open_webui.env import (
     ENABLE_RETRIEVAL_UNSCOPED_COLLECTIONS,
     OFFLINE_MODE,
 )
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.chats import Chats
-from open_webui.models.files import Files
-from open_webui.models.knowledge import Knowledges
-from open_webui.models.notes import Notes
-from open_webui.models.config import Config
-from open_webui.models.users import UserModel
-from open_webui.retrieval.loaders.youtube import YoutubeLoader
-from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-from open_webui.retrieval.external import retrieve_external_knowledge
-from open_webui.retrieval.vector.factory import VECTOR_DB_CLIENT
-from open_webui.retrieval.vector.main import GetResult, SearchResult
-from open_webui.retrieval.web.utils import get_web_loader
-from open_webui.utils.access_control.files import has_access_to_file
-from open_webui.utils.headers import include_user_info_headers
-from open_webui.utils.misc import get_message_list
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.files import Files
+from shaheen_ys_ui.models.knowledge import Knowledges
+from shaheen_ys_ui.models.notes import Notes
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.retrieval.loaders.youtube import YoutubeLoader
+from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+from shaheen_ys_ui.retrieval.external import retrieve_external_knowledge
+from shaheen_ys_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
+from shaheen_ys_ui.retrieval.vector.main import GetResult, SearchResult
+from shaheen_ys_ui.retrieval.web.utils import get_web_loader
+from shaheen_ys_ui.utils.access_control.files import has_access_to_file
+from shaheen_ys_ui.utils.headers import include_user_info_headers
+from shaheen_ys_ui.utils.misc import get_message_list
 
 log = logging.getLogger(__name__)
 
@@ -131,7 +131,7 @@ def get_loader(request, url: str, config: dict):
 
 def build_loader_from_config(request, config: dict):
     """Build a Loader instance with the admin's configured extraction engine settings."""
-    from open_webui.retrieval.loaders.main import Loader
+    from shaheen_ys_ui.retrieval.loaders.main import Loader
 
     loader_config = {key: config.get(key) for key in LOADER_CONFIG_KEYS if key.isupper()}
     return Loader(
@@ -201,7 +201,7 @@ async def get_content_from_url(request, url: str) -> str:
 
 
 def _get_content_from_url_sync(request, url: str, loader_config):
-    from open_webui.retrieval.web.utils import validate_url, _SSRFSafeAdapter
+    from shaheen_ys_ui.retrieval.web.utils import validate_url, _SSRFSafeAdapter
 
     # Validate URL before making any request (blocks private IPs, non-HTTP, filter list)
     validate_url(url)
@@ -1229,7 +1229,7 @@ def get_reranking_function(reranking_engine, reranking_model, reranking_function
 
 
 # UUIDs, SHA-256 digests, and prefixed variants thereof all fit [A-Za-z0-9_-].
-# Anything else cannot be a real Open WebUI collection and could break out of
+# Anything else cannot be a real SHAHEEN -YS-UI collection and could break out of
 # a Milvus expression literal.
 _SAFE_COLLECTION_NAME_RE = re.compile(r'^[A-Za-z0-9_-]{1,255}$')
 

@@ -3,8 +3,8 @@ from __future__ import annotations
 from urllib.parse import urlparse
 
 import validators
-from open_webui.retrieval.web.utils import resolve_hostname
-from open_webui.utils.misc import is_host_allowed
+from shaheen_ys_ui.retrieval.web.utils import resolve_hostname
+from shaheen_ys_ui.utils.misc import is_host_allowed
 from pydantic import BaseModel
 
 

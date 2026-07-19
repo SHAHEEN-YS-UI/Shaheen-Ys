@@ -8,11 +8,11 @@ import uuid
 from types import SimpleNamespace
 from typing import Any
 
-from open_webui.env import VERSION
-from open_webui.models.config import Config
+from shaheen_ys_ui.env import VERSION
+from shaheen_ys_ui.models.config import Config
 from pydantic import BaseModel, ConfigDict, Field, model_validator
-from open_webui.retrieval.web.utils import validate_url
-from open_webui.utils.webhook import post_webhook
+from shaheen_ys_ui.retrieval.web.utils import validate_url
+from shaheen_ys_ui.utils.webhook import post_webhook
 
 log = logging.getLogger(__name__)
 
@@ -776,7 +776,7 @@ async def event_target_matches(
         return False
 
     if user_group_ids is None:
-        from open_webui.models.groups import Groups
+        from shaheen_ys_ui.models.groups import Groups
 
         groups_by_user = await Groups.get_groups_by_member_ids(list(user_ids))
         user_group_ids = {user_id: {group.id for group in groups} for user_id, groups in groups_by_user.items()}
@@ -988,7 +988,7 @@ def build_event(
 
 
 async def dispatch_webhook_event(app: Any, event: Event) -> None:
-    name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', 'Open WebUI')
+    name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', 'SHAHEEN -YS-UI')
     subject = event.subject or {}
     subject_id = subject.get('id')
     definition = EVENT_DEFINITIONS_BY_NAME.get(event.event)
@@ -1025,8 +1025,8 @@ class WebhookEventSink:
 
 
 async def dispatch_event_functions(app: Any, event: Event, request: Any | None = None) -> None:
-    from open_webui.models.functions import Functions
-    from open_webui.utils.plugin import get_function_module_from_cache
+    from shaheen_ys_ui.models.functions import Functions
+    from shaheen_ys_ui.utils.plugin import get_function_module_from_cache
 
     context = request or SimpleNamespace(app=app)
     event_payload = event.model_dump()

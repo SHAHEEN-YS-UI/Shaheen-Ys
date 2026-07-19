@@ -14,7 +14,7 @@ from botocore.config import Config
 from botocore.exceptions import ClientError
 from google.cloud import storage
 from google.cloud.exceptions import GoogleCloudError, NotFound
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     AZURE_STORAGE_CONTAINER_NAME,
     AZURE_STORAGE_ENDPOINT,
     AZURE_STORAGE_KEY,
@@ -32,7 +32,7 @@ from open_webui.config import (
     STORAGE_PROVIDER,
     UPLOAD_DIR,
 )
-from open_webui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.constants import ERROR_MESSAGES
 
 log = logging.getLogger(__name__)
 
@@ -186,7 +186,7 @@ class S3StorageProvider(StorageProvider):
             response = self.s3_client.list_objects_v2(Bucket=self.bucket_name)
             if 'Contents' in response:
                 for content in response['Contents']:
-                    # Skip objects that were not uploaded from open-webui in the first place
+                    # Skip objects that were not uploaded from shaheen-ys-ui in the first place
                     if not content['Key'].startswith(self.key_prefix):
                         continue
 

@@ -3,10 +3,10 @@ import time
 from typing import Optional
 from uuid import uuid4
 
-from open_webui.internal.db import Base, get_async_db_context
-from open_webui.models.access_grants import AccessGrantModel, AccessGrants
-from open_webui.models.groups import Groups
-from open_webui.models.users import User, UserModel, UserResponse
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.models.access_grants import AccessGrantModel, AccessGrants
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.users import User, UserModel, UserResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import (
     JSON,
@@ -709,7 +709,7 @@ class CalendarEventTable:
         when the scheduler polls a few seconds after the event's exact start
         time.
         """
-        from open_webui.models.users import User as UserRow
+        from shaheen_ys_ui.models.users import User as UserRow
 
         # Use the maximum possible lookahead (60 min) to cast a wide net;
         # per-event filtering happens in Python after fetching.

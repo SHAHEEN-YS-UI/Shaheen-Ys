@@ -6,7 +6,7 @@ from urllib.parse import quote
 import requests
 from langchain_core.document_loaders import BaseLoader
 from langchain_core.documents import Document
-from open_webui.utils.headers import get_custom_headers, include_user_info_headers
+from shaheen_ys_ui.utils.headers import get_custom_headers, include_user_info_headers
 
 log = logging.getLogger(__name__)
 

@@ -6,10 +6,10 @@ from typing import Any
 
 from fastapi.responses import JSONResponse
 
-from open_webui.models.chats import Chats
-from open_webui.models.config import Config
-from open_webui.utils.misc import get_content_from_message, get_last_user_message, get_message_list
-from open_webui.utils.task import (
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.utils.misc import get_content_from_message, get_last_user_message, get_message_list
+from shaheen_ys_ui.utils.task import (
     get_task_model_id,
     prompt_template,
     prompt_variables_template,
@@ -65,7 +65,7 @@ async def compact_messages_for_request(
 
     event_emitter = None
     if metadata.get('chat_id') and metadata.get('message_id'):
-        from open_webui.socket.main import get_event_emitter
+        from shaheen_ys_ui.socket.main import get_event_emitter
 
         event_emitter = await get_event_emitter(metadata)
 
@@ -264,7 +264,7 @@ async def _generate_summary(
     previous_summary: str | None,
     summary_prompt_template: str,
 ) -> str:
-    from open_webui.utils.chat import generate_chat_completion
+    from shaheen_ys_ui.utils.chat import generate_chat_completion
 
     task_model_id = get_task_model_id(
         model_id,

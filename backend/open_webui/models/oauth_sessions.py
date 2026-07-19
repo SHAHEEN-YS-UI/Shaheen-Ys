@@ -7,8 +7,8 @@ import uuid
 from typing import List, Optional
 
 from cryptography.fernet import Fernet
-from open_webui.env import OAUTH_SESSION_TOKEN_ENCRYPTION_KEY
-from open_webui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.env import OAUTH_SESSION_TOKEN_ENCRYPTION_KEY
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, Index, String, Text, delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession

@@ -3,33 +3,33 @@ import logging
 from typing import Optional
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     BYPASS_ADMIN_ACCESS_CONTROL,
     ENABLE_ADMIN_CHAT_ACCESS,
     ENABLE_ADMIN_EXPORT,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.notes import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.notes import (
     NoteForm,
     NoteListResponse,
     NoteModel,
     Notes,
     NoteUserResponse,
 )
-from open_webui.models.users import UserResponse, Users
-from open_webui.socket.main import sio
-from open_webui.utils.access_control import (
+from shaheen_ys_ui.models.users import UserResponse, Users
+from shaheen_ys_ui.socket.main import sio
+from shaheen_ys_ui.utils.access_control import (
     filter_allowed_access_grants,
     has_permission,
     has_public_read_access_grant,
     has_public_write_access_grant,
 )
-from open_webui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

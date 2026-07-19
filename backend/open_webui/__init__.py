@@ -16,9 +16,9 @@ DEFAULT_SECRET_KEY_LENGTH = 24
 
 def version_callback(value: bool) -> None:
     if value:
-        from open_webui.env import VERSION
+        from shaheen_ys_ui.env import VERSION
 
-        typer.echo(f'Open WebUI version: {VERSION}')
+        typer.echo(f'SHAHEEN -YS-UI version: {VERSION}')
         raise typer.Exit()
 
 
@@ -70,8 +70,8 @@ def serve(
             os.environ['USE_CUDA_DOCKER'] = 'false'
             os.environ['LD_LIBRARY_PATH'] = ':'.join(LD_LIBRARY_PATH)
 
-    import open_webui.main  # noqa: F401
-    from open_webui.env import UVICORN_WORKERS  # Import the workers setting
+    import shaheen_ys_ui.main  # noqa: F401
+    from shaheen_ys_ui.env import UVICORN_WORKERS  # Import the workers setting
 
     # On Windows, uvicorn's default loop factory hardcodes ProactorEventLoop,
     # which is incompatible with psycopg v3 async.  Setting loop='none' lets
@@ -79,7 +79,7 @@ def serve(
     loop = 'none' if sys.platform == 'win32' else 'auto'
 
     uvicorn.run(
-        'open_webui.main:app',
+        'shaheen_ys_ui.main:app',
         host=host,
         port=port,
         forwarded_allow_ips='*',
@@ -95,7 +95,7 @@ def dev(
     reload: bool = True,
 ):
     uvicorn.run(
-        'open_webui.main:app',
+        'shaheen_ys_ui.main:app',
         host=host,
         port=port,
         reload=reload,

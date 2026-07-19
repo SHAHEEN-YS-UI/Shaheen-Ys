@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from zoneinfo import ZoneInfo
 
-from open_webui.utils.automations import _parse_rule
+from shaheen_ys_ui.utils.automations import _parse_rule
 
 log = logging.getLogger(__name__)
 

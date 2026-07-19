@@ -18,12 +18,12 @@ from fastapi.responses import (
     PlainTextResponse,
     StreamingResponse,
 )
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     CACHE_DIR,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event, publish_model_provider_request_failed
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event, publish_model_provider_request_failed
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     AIOHTTP_CLIENT_TIMEOUT,
     AIOHTTP_CLIENT_TIMEOUT_MODEL_LIST,
@@ -33,25 +33,25 @@ from open_webui.env import (
     FORWARD_SESSION_INFO_HEADER_CHAT_ID,
     MODELS_CACHE_TTL,
 )
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.models import Models
-from open_webui.models.users import UserModel
-from open_webui.utils.access_control import check_model_access, has_connection_access, has_permission
-from open_webui.utils.anthropic import get_anthropic_models, is_anthropic_url
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.headers import get_custom_headers, include_user_info_headers
-from open_webui.utils.misc import (
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.utils.access_control import check_model_access, has_connection_access, has_permission
+from shaheen_ys_ui.utils.anthropic import get_anthropic_models, is_anthropic_url
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.headers import get_custom_headers, include_user_info_headers
+from shaheen_ys_ui.utils.misc import (
     convert_logit_bias_input_to_json,
     stream_chunks_handler,
 )
-from open_webui.utils.payload import (
+from shaheen_ys_ui.utils.payload import (
     apply_model_params_to_body_openai,
     apply_system_prompt_to_body,
 )
-from open_webui.utils.session_pool import (
+from shaheen_ys_ui.utils.session_pool import (
     cleanup_response,
     get_session,
     stream_wrapper,
@@ -163,7 +163,7 @@ async def get_headers_and_cookies(
         **(
             {
                 'HTTP-Referer': 'https://openwebui.com/',
-                'X-Title': 'Open WebUI',
+                'X-Title': 'SHAHEEN -YS-UI',
             }
             if 'openrouter.ai' in url
             else {}
@@ -421,7 +421,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
 
             raise HTTPException(
                 status_code=r.status if r else 500,
-                detail=detail if detail else 'Open WebUI: Server Connection Error',
+                detail=detail if detail else 'SHAHEEN -YS-UI: Server Connection Error',
             )
 
     except ValueError:
@@ -696,7 +696,7 @@ async def get_models(request: Request, url_idx: int | None = None, user=Depends(
             except aiohttp.ClientError as e:
                 # ClientError covers all aiohttp requests issues
                 log.exception(f'Client error: {str(e)}')
-                raise HTTPException(status_code=500, detail='Open WebUI: Server Connection Error')
+                raise HTTPException(status_code=500, detail='SHAHEEN -YS-UI: Server Connection Error')
             except Exception as e:
                 log.exception(f'Unexpected error: {e}')
                 error_detail = f'Unexpected error: {str(e)}'
@@ -911,7 +911,7 @@ RESPONSES_ALLOWED_FIELDS: dict[str, set[str]] = {
 def _normalize_stored_item(item: dict) -> dict:
     """Strip local-only fields from a stored output item before replaying it.
 
-    Open WebUI stores extra bookkeeping fields (``id``, ``status``,
+    SHAHEEN -YS-UI stores extra bookkeeping fields (``id``, ``status``,
     ``started_at``, ``ended_at``, ``duration``, ``_tag_type``,
     ``attributes``, ``summary``, etc.) that the Responses API does
     not accept.  This helper returns a copy containing only the
@@ -1701,7 +1701,7 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
         log.exception(e)
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail='Open WebUI: Server Connection Error',
+            detail='SHAHEEN -YS-UI: Server Connection Error',
         )
     finally:
         if not streaming:

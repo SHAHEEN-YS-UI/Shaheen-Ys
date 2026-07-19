@@ -9,33 +9,33 @@ from typing import Any, Optional
 
 from aiocache import cached
 from fastapi import HTTPException, Request, status
-from open_webui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
-from open_webui.functions import generate_function_chat_completion
-from open_webui.models.functions import Functions
-from open_webui.models.models import Models
-from open_webui.models.users import UserModel
-from open_webui.routers.ollama import (
+from shaheen_ys_ui.env import BYPASS_MODEL_ACCESS_CONTROL, GLOBAL_LOG_LEVEL
+from shaheen_ys_ui.functions import generate_function_chat_completion
+from shaheen_ys_ui.models.functions import Functions
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.routers.ollama import (
     generate_chat_completion as generate_ollama_chat_completion,
 )
-from open_webui.routers.openai import (
+from shaheen_ys_ui.routers.openai import (
     generate_chat_completion as generate_openai_chat_completion,
 )
-from open_webui.routers.pipelines import (
+from shaheen_ys_ui.routers.pipelines import (
     process_pipeline_inlet_filter,
     process_pipeline_outlet_filter,
 )
-from open_webui.socket.main import (
+from shaheen_ys_ui.socket.main import (
     get_event_call,
     get_event_emitter,
     sio,
 )
-from open_webui.utils.filter import (
+from shaheen_ys_ui.utils.filter import (
     get_sorted_filter_ids,
     process_filter_functions,
 )
-from open_webui.utils.models import check_model_access, get_all_models
-from open_webui.utils.payload import convert_payload_openai_to_ollama
-from open_webui.utils.response import (
+from shaheen_ys_ui.utils.models import check_model_access, get_all_models
+from shaheen_ys_ui.utils.payload import convert_payload_openai_to_ollama
+from shaheen_ys_ui.utils.response import (
     convert_response_ollama_to_openai,
     convert_streaming_response_ollama_to_openai,
 )

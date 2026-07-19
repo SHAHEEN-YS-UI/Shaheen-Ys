@@ -16,13 +16,13 @@ from fastapi import (
     UploadFile,
     status,
 )
-from open_webui.config import CACHE_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL
-from open_webui.events import EVENTS, publish_event
-from open_webui.models.config import Config
-from open_webui.routers.openai import get_all_models_responses
-from open_webui.utils.auth import get_admin_user
+from shaheen_ys_ui.config import CACHE_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.routers.openai import get_all_models_responses
+from shaheen_ys_ui.utils.auth import get_admin_user
 from pydantic import BaseModel
 from starlette.responses import FileResponse
 

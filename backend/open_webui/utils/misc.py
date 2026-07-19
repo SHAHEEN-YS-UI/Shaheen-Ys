@@ -14,7 +14,7 @@ from typing import Callable, Optional, Sequence, Union
 
 import aiohttp
 import mimeparse
-from open_webui.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
+from shaheen_ys_ui.env import CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
 
 log = logging.getLogger(__name__)
 
@@ -371,7 +371,7 @@ def convert_output_to_messages(
                     reasoning_details if isinstance(reasoning_details, list) else [reasoning_details]
                 )
 
-        elif item_type == 'open_webui:code_interpreter':
+        elif item_type == 'shaheen_ys_ui:code_interpreter':
             # Always include code interpreter content so the LLM knows
             # the code was already executed and doesn't retry.
             code = item.get('code', '')
@@ -390,7 +390,7 @@ def convert_output_to_messages(
                 if output_text:
                     pending_content.append(f'<code_interpreter_output>\n{output_text}\n</code_interpreter_output>')
 
-        elif item_type.startswith('open_webui:'):
+        elif item_type.startswith('shaheen_ys_ui:'):
             # Skip other extension types
             pass
 

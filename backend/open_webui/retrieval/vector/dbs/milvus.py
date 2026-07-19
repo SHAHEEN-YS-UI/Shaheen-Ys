@@ -6,7 +6,7 @@ import json
 import logging
 from typing import Optional
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     MILVUS_DB,
     MILVUS_DISKANN_MAX_DEGREE,
     MILVUS_DISKANN_SEARCH_LIST_SIZE,
@@ -18,13 +18,13 @@ from open_webui.config import (
     MILVUS_TOKEN,
     MILVUS_URI,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 from pymilvus import Collection, DataType, FieldSchema, connections
 from pymilvus import MilvusClient as Client
 from pymilvus.exceptions import MilvusException
@@ -39,7 +39,7 @@ MILVUS_TEXT_MAX_LENGTH = 65535
 
 class MilvusClient(VectorDBBase):
     def __init__(self):
-        self.collection_prefix = 'open_webui'
+        self.collection_prefix = 'shaheen_ys_ui'
         if MILVUS_TOKEN is None:
             self.client = Client(uri=MILVUS_URI, db_name=MILVUS_DB)
         else:

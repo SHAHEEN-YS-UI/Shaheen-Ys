@@ -24,9 +24,9 @@ from asgiref.typing import (
     Scope as ASGIScope,
 )
 from loguru import logger
-from open_webui.env import AUDIT_INCLUDED_PATHS, AUDIT_LOG_LEVEL, ENABLE_AUDIT_GET_REQUESTS, MAX_BODY_LOG_SIZE
-from open_webui.models.users import UserModel
-from open_webui.utils.auth import get_current_user, get_http_authorization_cred
+from shaheen_ys_ui.env import AUDIT_INCLUDED_PATHS, AUDIT_LOG_LEVEL, ENABLE_AUDIT_GET_REQUESTS, MAX_BODY_LOG_SIZE
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.utils.auth import get_current_user, get_http_authorization_cred
 from starlette.requests import Request
 
 if TYPE_CHECKING:

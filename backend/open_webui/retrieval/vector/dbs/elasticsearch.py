@@ -7,7 +7,7 @@ from typing import Optional
 
 from elasticsearch import BadRequestError, Elasticsearch
 from elasticsearch.helpers import bulk, scan
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     ELASTICSEARCH_API_KEY,
     ELASTICSEARCH_CA_CERTS,
     ELASTICSEARCH_CLOUD_ID,
@@ -17,13 +17,13 @@ from open_webui.config import (
     ELASTICSEARCH_USERNAME,
     SSL_ASSERT_FINGERPRINT,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 
 
 class ElasticsearchClient(VectorDBBase):

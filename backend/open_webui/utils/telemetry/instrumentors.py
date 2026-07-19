@@ -8,7 +8,7 @@ from aiohttp import (
     TraceRequestStartParams,
 )
 from fastapi import FastAPI, status
-from open_webui.utils.telemetry.constants import SPAN_REDIS_TYPE, SpanAttributes
+from shaheen_ys_ui.utils.telemetry.constants import SPAN_REDIS_TYPE, SpanAttributes
 from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from opentelemetry.instrumentation.httpx import (

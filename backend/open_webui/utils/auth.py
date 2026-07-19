@@ -20,8 +20,8 @@ from cryptography.hazmat.primitives.asymmetric import ed25519
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from fastapi import BackgroundTasks, Depends, HTTPException, Request, Response, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import (
     ENABLE_OTEL,
     ENABLE_PASSWORD_VALIDATION,
     LICENSE_BLOB,
@@ -36,10 +36,10 @@ from open_webui.env import (
     WEBUI_SECRET_KEY,
     pk,
 )
-from open_webui.models.auths import Auths
-from open_webui.models.config import Config
-from open_webui.models.users import Users
-from open_webui.utils.access_control import has_permission
+from shaheen_ys_ui.models.auths import Auths
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.utils.access_control import has_permission
 from pytz import UTC
 
 log = logging.getLogger(__name__)

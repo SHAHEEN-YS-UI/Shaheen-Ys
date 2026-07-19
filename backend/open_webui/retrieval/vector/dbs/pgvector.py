@@ -2,7 +2,7 @@ import json
 import logging
 from typing import Any, Dict, List, Optional, Tuple
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     PGVECTOR_CREATE_EXTENSION,
     PGVECTOR_DB_URL,
     PGVECTOR_HNSW_EF_CONSTRUCTION,
@@ -18,14 +18,14 @@ from open_webui.config import (
     PGVECTOR_POOL_TIMEOUT,
     PGVECTOR_USE_HALFVEC,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import merge_hybrid_search_results, process_metadata
-from open_webui.utils.misc import sanitize_text_for_db
+from shaheen_ys_ui.retrieval.vector.utils import merge_hybrid_search_results, process_metadata
+from shaheen_ys_ui.utils.misc import sanitize_text_for_db
 from pgvector.sqlalchemy import HALFVEC, Vector
 from sqlalchemy import (
     Column,
@@ -87,7 +87,7 @@ class PgvectorClient(VectorDBBase):
     def __init__(self) -> None:
         # if no pgvector uri, use the existing database connection
         if not PGVECTOR_DB_URL:
-            from open_webui.internal.db import ScopedSession
+            from shaheen_ys_ui.internal.db import ScopedSession
 
             self.session = ScopedSession
         else:
@@ -219,7 +219,7 @@ class PgvectorClient(VectorDBBase):
                 f"Existing pgvector index '{index_name}' uses method '{existing_method}' but configuration now "
                 f"requires '{index_method}'. Automatic rebuild is disabled to prevent long-running maintenance. "
                 'Drop the index manually (optionally after tuning maintenance_work_mem/max_parallel_maintenance_workers) '
-                'and recreate it with the new method before restarting Open WebUI.'
+                'and recreate it with the new method before restarting SHAHEEN -YS-UI.'
             )
 
         if not existing_index_def:

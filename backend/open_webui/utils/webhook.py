@@ -2,13 +2,13 @@ import asyncio
 import json
 import logging
 
-from open_webui.config import WEBUI_FAVICON_URL
-from open_webui.env import (
+from shaheen_ys_ui.config import WEBUI_FAVICON_URL
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_ALLOW_REDIRECTS,
     AIOHTTP_CLIENT_SESSION_SSL,
     VERSION,
 )
-from open_webui.retrieval.web.utils import get_ssrf_safe_session, validate_url
+from shaheen_ys_ui.retrieval.web.utils import get_ssrf_safe_session, validate_url
 
 log = logging.getLogger(__name__)
 

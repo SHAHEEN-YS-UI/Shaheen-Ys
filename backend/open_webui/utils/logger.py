@@ -5,7 +5,7 @@ import traceback
 from typing import TYPE_CHECKING
 
 from loguru import logger
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     _LEVEL_MAP,
     AUDIT_LOG_FILE_ROTATION_SIZE,
     AUDIT_LOG_LEVEL,
@@ -112,7 +112,7 @@ class InterceptHandler(logging.Handler):
 
         logger.opt(depth=depth, exception=record.exc_info).bind(**self._get_extras()).log(level, record.getMessage())
         if ENABLE_OTEL and ENABLE_OTEL_LOGS:
-            from open_webui.utils.telemetry.logs import otel_handler
+            from shaheen_ys_ui.utils.telemetry.logs import otel_handler
 
             otel_handler.emit(record)
 

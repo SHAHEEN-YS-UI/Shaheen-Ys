@@ -8,12 +8,12 @@ import time
 import uuid
 
 # local imports
-from open_webui.internal.db import Base, JSONField, get_async_db_context
-from open_webui.models.automations import AutomationRun
-from open_webui.models.chat_messages import ChatMessage, ChatMessages
-from open_webui.models.folders import Folders
-from open_webui.models.tags import Tag, TagModel, Tags
-from open_webui.utils.misc import sanitize_data_for_db, sanitize_text_for_db
+from shaheen_ys_ui.internal.db import Base, JSONField, get_async_db_context
+from shaheen_ys_ui.models.automations import AutomationRun
+from shaheen_ys_ui.models.chat_messages import ChatMessage, ChatMessages
+from shaheen_ys_ui.models.folders import Folders
+from shaheen_ys_ui.models.tags import Tag, TagModel, Tags
+from shaheen_ys_ui.utils.misc import sanitize_data_for_db, sanitize_text_for_db
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import (
     JSON,
@@ -833,7 +833,7 @@ class ChatTable:
 
     async def insert_shared_chat_by_chat_id(self, chat_id: str, db: AsyncSession | None = None) -> ChatModel | None:
         """Create a shared snapshot for a chat. Returns the original chat with share_id set."""
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         async with get_async_db_context(db) as session:
             chat = await session.get(Chat, chat_id)
@@ -861,7 +861,7 @@ class ChatTable:
         db: AsyncSession | None = None,
     ) -> ChatModel | None:
         """Refresh the shared snapshot with current chat content."""
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         async with get_async_db_context(db) as session:
             record = await session.get(Chat, chat_id)
@@ -874,7 +874,7 @@ class ChatTable:
 
     async def delete_shared_chat_by_chat_id(self, chat_id: str, db: AsyncSession | None = None) -> bool:
         """Delete shared snapshot for a chat."""
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         try:
             return await SharedChats.delete_by_chat_id(chat_id, db=db)
@@ -1010,7 +1010,7 @@ class ChatTable:
         db: AsyncSession | None = None,
     ) -> list[SharedChatResponse]:
         """Delegate to SharedChats for listing shared chats by user."""
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         return await SharedChats.get_by_user_id(user_id, filter=filter, skip=skip, limit=limit, db=db)
 
@@ -1151,7 +1151,7 @@ class ChatTable:
         limit: int = 50,
         db: AsyncSession | None = None,
     ) -> dict:
-        from open_webui.models.users import User
+        from shaheen_ys_ui.models.users import User
 
         async with get_async_db_context(db) as session:
             chat_ids = (
@@ -1234,7 +1234,7 @@ class ChatTable:
 
     async def get_chat_by_share_id(self, id: str, db: AsyncSession | None = None) -> ChatModel | None:
         """Look up a shared chat snapshot by its share token."""
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         try:
             shared = await SharedChats.get_by_id(id, db=db)
@@ -1938,8 +1938,8 @@ class ChatTable:
 
     async def delete_shared_chats_by_user_id(self, user_id: str, db: AsyncSession | None = None) -> bool:
         """Delete all shared chat snapshots created by a user."""
-        from open_webui.models.shared_chats import SharedChat as SharedChatTable
-        from open_webui.models.shared_chats import SharedChats
+        from shaheen_ys_ui.models.shared_chats import SharedChat as SharedChatTable
+        from shaheen_ys_ui.models.shared_chats import SharedChats
 
         try:
             async with get_async_db_context(db) as session:
@@ -1974,9 +1974,9 @@ class ChatTable:
             return None
 
         # Only link files the caller can read; blocks forging a chat_file row to another user's file.
-        from open_webui.models.files import Files
-        from open_webui.models.users import Users
-        from open_webui.utils.access_control.files import has_access_to_file
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.users import Users
+        from shaheen_ys_ui.utils.access_control.files import has_access_to_file
 
         user = await Users.get_user_by_id(user_id, db=db)
         accessible_file_ids = []

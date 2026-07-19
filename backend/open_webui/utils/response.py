@@ -2,7 +2,7 @@ import json
 from numbers import Number
 from uuid import uuid4
 
-from open_webui.utils.misc import (
+from shaheen_ys_ui.utils.misc import (
     openai_chat_chunk_message_template,
     openai_chat_completion_message_template,
 )

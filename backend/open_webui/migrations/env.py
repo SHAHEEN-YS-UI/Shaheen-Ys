@@ -5,17 +5,17 @@ from __future__ import annotations
 import logging.config
 import logging
 import alembic.context
-from open_webui.env import DATABASE_PASSWORD, DATABASE_URL, LOG_FORMAT
-from open_webui.internal.db import enable_iam_token_auth, extract_ssl_params_from_url, reattach_ssl_params_to_url
-from open_webui.models.auths import Auth
-from open_webui.models.calendar import Calendar, CalendarEvent, CalendarEventAttendee  # noqa: F401
+from shaheen_ys_ui.env import DATABASE_PASSWORD, DATABASE_URL, LOG_FORMAT
+from shaheen_ys_ui.internal.db import enable_iam_token_auth, extract_ssl_params_from_url, reattach_ssl_params_to_url
+from shaheen_ys_ui.models.auths import Auth
+from shaheen_ys_ui.models.calendar import Calendar, CalendarEvent, CalendarEventAttendee  # noqa: F401
 from sqlalchemy import create_engine, engine_from_config, pool
 
 alembic_config = alembic.context.config
 if alembic_config.config_file_name:
     logging.config.fileConfig(alembic_config.config_file_name, disable_existing_loggers=False)
 if LOG_FORMAT == 'json':
-    from open_webui.env import JSONFormatter
+    from shaheen_ys_ui.env import JSONFormatter
 
     for log_handler in logging.root.handlers:
         log_handler.setFormatter(JSONFormatter())

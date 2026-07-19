@@ -11,7 +11,7 @@ All pool parameters are configurable via environment variables:
     - AIOHTTP_POOL_DNS_TTL (default 300) — DNS cache TTL in seconds
 
 Usage:
-    from open_webui.utils.session_pool import get_session, cleanup_response
+    from shaheen_ys_ui.utils.session_pool import get_session, cleanup_response
 
     session = await get_session()
     r = await session.request(...)
@@ -27,7 +27,7 @@ import logging
 from typing import Optional
 
 import aiohttp
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_TIMEOUT,
     AIOHTTP_POOL_CONNECTIONS,
     AIOHTTP_POOL_CONNECTIONS_PER_HOST,

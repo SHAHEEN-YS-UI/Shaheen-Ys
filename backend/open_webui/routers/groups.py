@@ -4,12 +4,12 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.config import CACHE_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.groups import (
+from shaheen_ys_ui.config import CACHE_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.groups import (
     GroupForm,
     GroupInfoResponse,
     GroupResponse,
@@ -17,11 +17,11 @@ from open_webui.models.groups import (
     GroupUpdateForm,
     UserIdsForm,
 )
-from open_webui.models.knowledge import Knowledges
-from open_webui.models.models import Models
-from open_webui.models.tools import Tools
-from open_webui.models.users import UserInfoResponse, Users
-from open_webui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.models.knowledge import Knowledges
+from shaheen_ys_ui.models.models import Models
+from shaheen_ys_ui.models.tools import Tools
+from shaheen_ys_ui.models.users import UserInfoResponse, Users
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
 from sqlalchemy.ext.asyncio import AsyncSession
 
 log = logging.getLogger(__name__)

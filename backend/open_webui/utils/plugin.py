@@ -11,14 +11,14 @@ import types
 from importlib import util
 from typing import Any
 
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     ENABLE_PIP_INSTALL_FRONTMATTER_REQUIREMENTS,
     OFFLINE_MODE,
     PIP_OPTIONS,
     PIP_PACKAGE_INDEX_OPTIONS,
 )
-from open_webui.models.functions import FunctionModel, Functions
-from open_webui.models.tools import Tools
+from shaheen_ys_ui.models.functions import FunctionModel, Functions
+from shaheen_ys_ui.models.tools import Tools
 
 log = logging.getLogger(__name__)
 
@@ -188,10 +188,10 @@ def replace_imports(content):
     Replace the import paths in the content.
     """
     replacements = {
-        'from utils': 'from open_webui.utils',
-        'from apps': 'from open_webui.apps',
-        'from main': 'from open_webui.main',
-        'from config': 'from open_webui.config',
+        'from utils': 'from shaheen_ys_ui.utils',
+        'from apps': 'from shaheen_ys_ui.apps',
+        'from main': 'from shaheen_ys_ui.main',
+        'from config': 'from shaheen_ys_ui.config',
     }
 
     for old, new in replacements.items():

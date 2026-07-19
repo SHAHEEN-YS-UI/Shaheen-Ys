@@ -6,7 +6,7 @@ import logging
 from typing import Optional
 from urllib.parse import urlparse
 
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     QDRANT_API_KEY,
     QDRANT_COLLECTION_PREFIX,
     QDRANT_GRPC_PORT,
@@ -16,7 +16,7 @@ from open_webui.config import (
     QDRANT_TIMEOUT,
     QDRANT_URI,
 )
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,

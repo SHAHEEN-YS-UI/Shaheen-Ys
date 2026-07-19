@@ -6,21 +6,21 @@ import logging
 from typing import Any, Dict, List, Optional, Union
 
 import boto3
-from open_webui.config import S3_VECTOR_BUCKET_NAME, S3_VECTOR_REGION
-from open_webui.retrieval.vector.main import (
+from shaheen_ys_ui.config import S3_VECTOR_BUCKET_NAME, S3_VECTOR_REGION
+from shaheen_ys_ui.retrieval.vector.main import (
     GetResult,
     SearchResult,
     VectorDBBase,
     VectorItem,
 )
-from open_webui.retrieval.vector.utils import process_metadata
+from shaheen_ys_ui.retrieval.vector.utils import process_metadata
 
 log = logging.getLogger(__name__)
 
 
 class S3VectorClient(VectorDBBase):
     """
-    AWS S3 Vector integration for Open WebUI Knowledge.
+    AWS S3 Vector integration for SHAHEEN -YS-UI Knowledge.
     """
 
     def __init__(self):
@@ -82,7 +82,7 @@ class S3VectorClient(VectorDBBase):
         if not isinstance(metadata, dict) or len(metadata) <= 10:
             return metadata
 
-        # Keep only the first 10 keys, prioritizing important ones based on actual Open WebUI metadata
+        # Keep only the first 10 keys, prioritizing important ones based on actual SHAHEEN -YS-UI metadata
         important_keys = [
             'text',  # The actual document content
             'file_id',  # File ID
@@ -537,7 +537,7 @@ class S3VectorClient(VectorDBBase):
             log.info(f"Retrieved {len(all_ids)} vectors from collection '{collection_name}'")
 
             # Return in GetResult format
-            # The Open WebUI GetResult expects lists of lists, so we wrap each list
+            # The SHAHEEN -YS-UI GetResult expects lists of lists, so we wrap each list
             if all_ids:
                 return GetResult(ids=[all_ids], documents=[all_documents], metadatas=[all_metadatas])
             else:

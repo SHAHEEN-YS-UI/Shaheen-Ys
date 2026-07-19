@@ -34,7 +34,7 @@ from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
     TokenTextSplitter,
 )
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     DEFAULT_LOCALE,
     ENV,
     RAG_EMBEDDING_CONTENT_PREFIX,
@@ -45,8 +45,8 @@ from open_webui.config import (
     RAG_RERANKING_MODEL_TRUST_REMOTE_CODE,
     UPLOAD_DIR,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import (
     DEVICE_TYPE,
     DOCKER,
     RAG_EMBEDDING_TIMEOUT,
@@ -56,15 +56,15 @@ from open_webui.env import (
     SENTENCE_TRANSFORMERS_CROSS_ENCODER_SIGMOID_ACTIVATION_FUNCTION,
     SENTENCE_TRANSFORMERS_MODEL_KWARGS,
 )
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_db, get_async_session
-from open_webui.models.files import FileModel, Files, FileUpdateForm
-from open_webui.models.knowledge import Knowledges
-from open_webui.models.config import Config
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_db, get_async_session
+from shaheen_ys_ui.models.files import FileModel, Files, FileUpdateForm
+from shaheen_ys_ui.models.knowledge import Knowledges
+from shaheen_ys_ui.models.config import Config
 
 # Document loaders
-from open_webui.retrieval.loaders.youtube import YoutubeLoader
-from open_webui.retrieval.utils import (
+from shaheen_ys_ui.retrieval.loaders.youtube import YoutubeLoader
+from shaheen_ys_ui.retrieval.utils import (
     build_loader_from_config,
     get_loader_config,
     filter_accessible_collections,
@@ -77,48 +77,48 @@ from open_webui.retrieval.utils import (
     query_doc,
     query_doc_with_hybrid_search,
 )
-from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-from open_webui.retrieval.vector.factory import VECTOR_DB_CLIENT
-from open_webui.retrieval.vector.utils import filter_metadata
-from open_webui.retrieval.web.azure import search_azure
-from open_webui.retrieval.web.bing import search_bing
-from open_webui.retrieval.web.bocha import search_bocha
-from open_webui.retrieval.web.brave import search_brave
-from open_webui.retrieval.web.brave_llm_context import search_brave_llm_context
-from open_webui.retrieval.web.duckduckgo import search_duckduckgo
-from open_webui.retrieval.web.exa import search_exa
-from open_webui.retrieval.web.external import search_external
-from open_webui.retrieval.web.firecrawl import search_firecrawl
-from open_webui.retrieval.web.google_pse import search_google_pse
-from open_webui.retrieval.web.jina_search import search_jina
-from open_webui.retrieval.web.kagi import search_kagi
+from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+from shaheen_ys_ui.retrieval.vector.factory import VECTOR_DB_CLIENT
+from shaheen_ys_ui.retrieval.vector.utils import filter_metadata
+from shaheen_ys_ui.retrieval.web.azure import search_azure
+from shaheen_ys_ui.retrieval.web.bing import search_bing
+from shaheen_ys_ui.retrieval.web.bocha import search_bocha
+from shaheen_ys_ui.retrieval.web.brave import search_brave
+from shaheen_ys_ui.retrieval.web.brave_llm_context import search_brave_llm_context
+from shaheen_ys_ui.retrieval.web.duckduckgo import search_duckduckgo
+from shaheen_ys_ui.retrieval.web.exa import search_exa
+from shaheen_ys_ui.retrieval.web.external import search_external
+from shaheen_ys_ui.retrieval.web.firecrawl import search_firecrawl
+from shaheen_ys_ui.retrieval.web.google_pse import search_google_pse
+from shaheen_ys_ui.retrieval.web.jina_search import search_jina
+from shaheen_ys_ui.retrieval.web.kagi import search_kagi
 
 # Web search engines
-from open_webui.retrieval.web.main import SearchResult
-from open_webui.retrieval.web.microsoft_web_iq import search_microsoft_web_iq
-from open_webui.retrieval.web.mojeek import search_mojeek
-from open_webui.retrieval.web.ollama import search_ollama_cloud
-from open_webui.retrieval.web.perplexity import search_perplexity
-from open_webui.retrieval.web.perplexity_search import search_perplexity_search
-from open_webui.retrieval.web.searchapi import search_searchapi
-from open_webui.retrieval.web.searxng import search_searxng
-from open_webui.retrieval.web.serpapi import search_serpapi
-from open_webui.retrieval.web.serper import search_serper
-from open_webui.retrieval.web.serphouse import search_serphouse
-from open_webui.retrieval.web.serply import search_serply
-from open_webui.retrieval.web.serpstack import search_serpstack
-from open_webui.retrieval.web.sougou import search_sougou
-from open_webui.retrieval.web.tavily import search_tavily
-from open_webui.retrieval.web.utils import get_web_loader
-from open_webui.retrieval.web.yacy import search_yacy
-from open_webui.retrieval.web.yandex import search_yandex
-from open_webui.retrieval.web.ydc import search_youcom
-from open_webui.retrieval.web.linkup import search_linkup
-from open_webui.storage.provider import Storage
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.access_control.files import has_access_to_file
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.misc import (
+from shaheen_ys_ui.retrieval.web.main import SearchResult
+from shaheen_ys_ui.retrieval.web.microsoft_web_iq import search_microsoft_web_iq
+from shaheen_ys_ui.retrieval.web.mojeek import search_mojeek
+from shaheen_ys_ui.retrieval.web.ollama import search_ollama_cloud
+from shaheen_ys_ui.retrieval.web.perplexity import search_perplexity
+from shaheen_ys_ui.retrieval.web.perplexity_search import search_perplexity_search
+from shaheen_ys_ui.retrieval.web.searchapi import search_searchapi
+from shaheen_ys_ui.retrieval.web.searxng import search_searxng
+from shaheen_ys_ui.retrieval.web.serpapi import search_serpapi
+from shaheen_ys_ui.retrieval.web.serper import search_serper
+from shaheen_ys_ui.retrieval.web.serphouse import search_serphouse
+from shaheen_ys_ui.retrieval.web.serply import search_serply
+from shaheen_ys_ui.retrieval.web.serpstack import search_serpstack
+from shaheen_ys_ui.retrieval.web.sougou import search_sougou
+from shaheen_ys_ui.retrieval.web.tavily import search_tavily
+from shaheen_ys_ui.retrieval.web.utils import get_web_loader
+from shaheen_ys_ui.retrieval.web.yacy import search_yacy
+from shaheen_ys_ui.retrieval.web.yandex import search_yandex
+from shaheen_ys_ui.retrieval.web.ydc import search_youcom
+from shaheen_ys_ui.retrieval.web.linkup import search_linkup
+from shaheen_ys_ui.storage.provider import Storage
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.access_control.files import has_access_to_file
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.misc import (
     calculate_sha256_string,
     sanitize_text_for_db,
 )
@@ -173,7 +173,7 @@ def get_rf(
     if reranking_model:
         if any(model in reranking_model for model in ['jinaai/jina-colbert-v2']):
             try:
-                from open_webui.retrieval.models.colbert import ColBERT
+                from shaheen_ys_ui.retrieval.models.colbert import ColBERT
 
                 rf = ColBERT(
                     get_model_path(reranking_model, auto_update),
@@ -186,7 +186,7 @@ def get_rf(
         else:
             if engine == 'external':
                 try:
-                    from open_webui.retrieval.models.external import ExternalReranker
+                    from shaheen_ys_ui.retrieval.models.external import ExternalReranker
 
                     rf = ExternalReranker(
                         url=external_reranker_url,

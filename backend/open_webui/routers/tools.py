@@ -8,16 +8,16 @@ from typing import Optional
 
 import aiohttp
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.config import BYPASS_ADMIN_ACCESS_CONTROL, CACHE_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.env import AIOHTTP_CLIENT_SESSION_SSL, AIOHTTP_CLIENT_TIMEOUT
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.oauth_sessions import OAuthSessions
-from open_webui.models.tools import (
+from shaheen_ys_ui.config import BYPASS_ADMIN_ACCESS_CONTROL, CACHE_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.env import AIOHTTP_CLIENT_SESSION_SSL, AIOHTTP_CLIENT_TIMEOUT
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.oauth_sessions import OAuthSessions
+from shaheen_ys_ui.models.tools import (
     ToolAccessResponse,
     ToolForm,
     ToolModel,
@@ -25,20 +25,20 @@ from open_webui.models.tools import (
     Tools,
     ToolUserResponse,
 )
-from open_webui.utils.access_control import (
+from shaheen_ys_ui.utils.access_control import (
     filter_allowed_access_grants,
     has_access,
     has_permission,
 )
-from open_webui.utils.auth import get_admin_user, get_verified_user
-from open_webui.utils.plugin import (
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.plugin import (
     get_tools_cache,
     get_tool_module_from_cache,
     load_tool_module_by_id,
     replace_imports,
     resolve_valves_schema_options,
 )
-from open_webui.utils.tools import get_tool_servers, get_tool_specs
+from shaheen_ys_ui.utils.tools import get_tool_servers, get_tool_specs
 from pydantic import BaseModel, HttpUrl
 from sqlalchemy.ext.asyncio import AsyncSession
 

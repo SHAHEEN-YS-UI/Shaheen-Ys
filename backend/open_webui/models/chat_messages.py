@@ -5,8 +5,8 @@ from typing import Any, Optional
 
 from sqlalchemy import select, delete, func, cast, Integer, distinct
 from sqlalchemy.ext.asyncio import AsyncSession
-from open_webui.internal.db import Base, get_async_db_context
-from open_webui.utils.response import merge_usage, normalize_usage
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.utils.response import merge_usage, normalize_usage
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import (
     JSON,
@@ -429,7 +429,7 @@ class ChatMessageTable:
         db: Optional[AsyncSession] = None,
     ) -> dict[str, int]:
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             stmt = select(ChatMessage.model_id, func.count(ChatMessage.id).label('count')).filter(
                 ChatMessage.role == 'assistant',
@@ -457,7 +457,7 @@ class ChatMessageTable:
     ) -> dict[str, dict]:
         """Count distinct users and chats per model."""
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             stmt = select(
                 ChatMessage.model_id,
@@ -495,7 +495,7 @@ class ChatMessageTable:
     ) -> dict[str, dict]:
         """Aggregate token usage by model using database-level aggregation."""
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             # We need the dialect to determine JSON extraction syntax
             # For async sessions, access via get_bind()
@@ -545,7 +545,7 @@ class ChatMessageTable:
     ) -> dict[str, dict]:
         """Aggregate token usage by user using database-level aggregation."""
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             bind = await db.connection()
             dialect = bind.dialect.name
@@ -592,7 +592,7 @@ class ChatMessageTable:
         db: Optional[AsyncSession] = None,
     ) -> dict[str, int]:
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             stmt = select(ChatMessage.user_id, func.count(ChatMessage.id).label('count')).filter(
                 ChatMessage.role == 'assistant',
@@ -618,7 +618,7 @@ class ChatMessageTable:
         db: Optional[AsyncSession] = None,
     ) -> dict[str, int]:
         async with get_async_db_context(db) as db:
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             stmt = select(ChatMessage.chat_id, func.count(ChatMessage.id).label('count')).filter(
                 ChatMessage.role == 'assistant',
@@ -647,7 +647,7 @@ class ChatMessageTable:
         async with get_async_db_context(db) as db:
             from datetime import datetime, timedelta
 
-            from open_webui.models.groups import GroupMember
+            from shaheen_ys_ui.models.groups import GroupMember
 
             stmt = select(ChatMessage.created_at, ChatMessage.model_id).filter(
                 ChatMessage.role == 'assistant',

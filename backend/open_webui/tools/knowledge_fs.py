@@ -151,7 +151,7 @@ def _extract_numeric_flag(tokens: list[str]) -> tuple[Optional[int], list[str]]:
 
 async def _build_directory_tree(knowledge_id: str) -> dict:
     """Build an in-memory directory tree for a KB. Returns {dirs, files, path_to_dir_id, dir_id_to_path}."""
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     all_dirs = await Knowledges.get_all_directories(knowledge_id)
     files_with_dirs = await Knowledges.get_files_with_directory_ids(knowledge_id)
@@ -249,9 +249,9 @@ async def _get_accessible_kb_ids(
     user: dict, model_knowledge: list[dict] | None, knowledge_id: str | None = None
 ) -> list[tuple[str, str, str]]:
     """Get list of (kb_id, kb_name, kb_description) the user can access."""
-    from open_webui.models.access_grants import AccessGrants
-    from open_webui.models.groups import Groups
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.access_grants import AccessGrants
+    from shaheen_ys_ui.models.groups import Groups
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     user_id = user.get('id')
     user_role = user.get('role', 'user')
@@ -306,8 +306,8 @@ async def _get_accessible_files(
     user: dict, model_knowledge: list[dict] | None, knowledge_id: str | None = None
 ) -> list[dict]:
     """Get all files the user can access, with KB metadata and directory_id (no path computation)."""
-    from open_webui.models.files import Files
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.files import Files
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     kb_ids = await _get_accessible_kb_ids(user, model_knowledge, knowledge_id)
     files = []
@@ -355,7 +355,7 @@ async def _get_accessible_files(
 
 async def _resolve_dir_path(path: str, knowledge_id: str) -> str | None:
     """Walk a directory path one level at a time. Returns dir_id or None."""
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     parts = path.strip('/').split('/')
     current_parent = None
@@ -372,7 +372,7 @@ async def _resolve_dir_path(path: str, knowledge_id: str) -> str | None:
 
 async def _get_descendant_dir_ids(dir_id: str, knowledge_id: str) -> set[str]:
     """Collect all descendant directory IDs recursively."""
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     result = {dir_id}
     queue = [dir_id]
@@ -388,7 +388,7 @@ async def _get_descendant_dir_ids(dir_id: str, knowledge_id: str) -> set[str]:
 
 async def _resolve_file(ref: str, user: dict, model_knowledge: list[dict] | None) -> dict | None:
     """Resolve a file reference (ID, path, or filename) to a file info dict with content."""
-    from open_webui.models.files import Files
+    from shaheen_ys_ui.models.files import Files
 
     # Get accessible file IDs (lightweight — no path computation)
     accessible = await _get_accessible_files(user, model_knowledge)
@@ -461,7 +461,7 @@ async def _resolve_file(ref: str, user: dict, model_knowledge: list[dict] | None
 
 async def _get_file_content(file_id: str) -> str | None:
     """Get file content by ID."""
-    from open_webui.models.files import Files
+    from shaheen_ys_ui.models.files import Files
 
     f = await Files.get_file_by_id(file_id)
     if f and f.data:
@@ -476,7 +476,7 @@ async def _get_file_content(file_id: str) -> str | None:
 
 async def _kb_ls(args: list[str], flags: set[str], user: dict, model_knowledge: list[dict] | None) -> str:
     """List files and directories. Supports: ls, ls <path>, ls -a (flat)."""
-    from open_webui.models.knowledge import Knowledges
+    from shaheen_ys_ui.models.knowledge import Knowledges
 
     flat_mode = 'a' in flags
     path_arg = args[0] if args else None
@@ -741,7 +741,7 @@ async def _kb_grep(
     if len(accessible) > MAX_GREP_FILES:
         return f'Too many files ({len(accessible)}). Scope your search: grep "{pattern}" docs/ or grep "{pattern}" *.py'
 
-    from open_webui.models.files import Files
+    from shaheen_ys_ui.models.files import Files
 
     results = []
     file_match_counts = []

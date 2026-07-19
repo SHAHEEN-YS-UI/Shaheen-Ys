@@ -3,7 +3,7 @@ import time
 import uuid
 from typing import Optional
 
-from open_webui.internal.db import Base, get_async_db_context
+from shaheen_ys_ui.internal.db import Base, get_async_db_context
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, Column, Text, UniqueConstraint, and_, delete, or_, select
 from sqlalchemy.dialects.postgresql import JSONB
@@ -528,7 +528,7 @@ class AccessGrantsTable:
 
             # Group access
             if user_group_ids is None:
-                from open_webui.models.groups import Groups
+                from shaheen_ys_ui.models.groups import Groups
 
                 user_groups = await Groups.get_groups_by_member_id(user_id, db=db)
                 user_group_ids = {group.id for group in user_groups}
@@ -584,7 +584,7 @@ class AccessGrantsTable:
             ]
 
             if user_group_ids is None:
-                from open_webui.models.groups import Groups
+                from shaheen_ys_ui.models.groups import Groups
 
                 user_groups = await Groups.get_groups_by_member_id(user_id, db=db)
                 user_group_ids = {group.id for group in user_groups}
@@ -621,8 +621,8 @@ class AccessGrantsTable:
         Get all users who have the specified permission on a resource.
         Returns a list of UserModel instances.
         """
-        from open_webui.models.groups import Groups
-        from open_webui.models.users import UserModel, Users
+        from shaheen_ys_ui.models.groups import Groups
+        from shaheen_ys_ui.models.users import UserModel, Users
 
         async with get_async_db_context(db) as db:
             result = await db.execute(

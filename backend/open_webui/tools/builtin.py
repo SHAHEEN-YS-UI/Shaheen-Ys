@@ -1,12 +1,12 @@
 """
-Built-in tools for Open WebUI.
+Built-in tools for SHAHEEN -YS-UI.
 
 These tools are automatically available when native function calling is enabled.
 
 IMPORTANT: DO NOT IMPORT THIS MODULE DIRECTLY IN OTHER PARTS OF THE CODEBASE.
 """
 
-from open_webui.tools.knowledge_fs import kb_exec  # noqa: F401 — re-exported
+from shaheen_ys_ui.tools.knowledge_fs import kb_exec  # noqa: F401 — re-exported
 
 import asyncio
 import json
@@ -16,23 +16,23 @@ from typing import Optional
 
 from fastapi import Request
 
-from open_webui.models.channels import Channel, ChannelMember, Channels
-from open_webui.models.chats import Chats
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.memories import Memories
-from open_webui.models.messages import Message, Messages
-from open_webui.models.notes import Notes
-from open_webui.models.users import UserModel
-from open_webui.retrieval.utils import get_content_from_url
-from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-from open_webui.routers.images import (
+from shaheen_ys_ui.models.channels import Channel, ChannelMember, Channels
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.memories import Memories
+from shaheen_ys_ui.models.messages import Message, Messages
+from shaheen_ys_ui.models.notes import Notes
+from shaheen_ys_ui.models.users import UserModel
+from shaheen_ys_ui.retrieval.utils import get_content_from_url
+from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+from shaheen_ys_ui.routers.images import (
     CreateImageForm,
     EditImageForm,
     image_edits,
     image_generations,
 )
-from open_webui.routers.memories import (
+from shaheen_ys_ui.routers.memories import (
     AddMemoryForm,
     ListMemoryPathsForm,
     MemoryUpdateModel,
@@ -45,11 +45,11 @@ from open_webui.routers.memories import (
     update_memories as _update_memories,
     update_memory_by_id,
 )
-from open_webui.routers.memories import (
+from shaheen_ys_ui.routers.memories import (
     add_memory as _add_memory,
 )
-from open_webui.routers.retrieval import search_web as _search_web
-from open_webui.utils.sanitize import sanitize_code
+from shaheen_ys_ui.routers.retrieval import search_web as _search_web
+from shaheen_ys_ui.utils.sanitize import sanitize_code
 
 log = logging.getLogger(__name__)
 
@@ -67,7 +67,7 @@ async def _has_read_access_to_file(
         return True
     if model_knowledge and any(item.get('type') == 'file' and item.get('id') == file.id for item in model_knowledge):
         return True
-    from open_webui.utils.access_control.files import has_access_to_file
+    from shaheen_ys_ui.utils.access_control.files import has_access_to_file
 
     return await has_access_to_file(
         file_id=file.id,
@@ -456,7 +456,7 @@ async def execute_code(
         code = sanitize_code(code)
 
         # Import blocked modules from config (same as middleware)
-        from open_webui.config import CODE_INTERPRETER_BLOCKED_MODULES
+        from shaheen_ys_ui.config import CODE_INTERPRETER_BLOCKED_MODULES
 
         # Add import blocking code if there are blocked modules
         if CODE_INTERPRETER_BLOCKED_MODULES:
@@ -520,7 +520,7 @@ async def execute_code(
                 result = str(output) if output else ''
 
         elif engine == 'jupyter':
-            from open_webui.utils.code_interpreter import execute_code_jupyter
+            from shaheen_ys_ui.utils.code_interpreter import execute_code_jupyter
 
             jupyter_auth = await Config.get('code_interpreter.jupyter.auth')
 
@@ -542,8 +542,8 @@ async def execute_code(
         # Handle image outputs (base64 encoded) - replace with uploaded URLs
         # Get actual user object for image upload (upload_image requires user.id attribute)
         if __user__ and __user__.get('id'):
-            from open_webui.models.users import Users
-            from open_webui.utils.files import get_image_url_from_base64
+            from shaheen_ys_ui.models.users import Users
+            from shaheen_ys_ui.utils.files import get_image_url_from_base64
 
             user = await Users.get_user_by_id(__user__['id'])
 
@@ -1046,7 +1046,7 @@ async def view_note(
         user_id = __user__.get('id')
         user_group_ids = [group.id for group in await Groups.get_groups_by_member_id(user_id)]
 
-        from open_webui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.access_grants import AccessGrants
 
         if note.user_id != user_id and not await AccessGrants.has_access(
             user_id=user_id,
@@ -1097,7 +1097,7 @@ async def write_note(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.notes import NoteForm
+        from shaheen_ys_ui.models.notes import NoteForm
 
         user_id = __user__.get('id')
 
@@ -1148,7 +1148,7 @@ async def replace_note_content(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.notes import NoteUpdateForm
+        from shaheen_ys_ui.models.notes import NoteUpdateForm
 
         note = await Notes.get_note_by_id(note_id)
 
@@ -1159,7 +1159,7 @@ async def replace_note_content(
         user_id = __user__.get('id')
         user_group_ids = [group.id for group in await Groups.get_groups_by_member_id(user_id)]
 
-        from open_webui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.access_grants import AccessGrants
 
         if note.user_id != user_id and not await AccessGrants.has_access(
             user_id=user_id,
@@ -1657,7 +1657,7 @@ async def list_knowledge_bases(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.knowledge import Knowledges
 
         user_id = __user__.get('id')
         user_group_ids = [group.id for group in await Groups.get_groups_by_member_id(user_id)]
@@ -1717,7 +1717,7 @@ async def search_knowledge_bases(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.knowledge import Knowledges
 
         user_id = __user__.get('id')
         user_group_ids = [group.id for group in await Groups.get_groups_by_member_id(user_id)]
@@ -1781,9 +1781,9 @@ async def search_knowledge_files(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.files import Files
-        from open_webui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.knowledge import Knowledges
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -1956,9 +1956,9 @@ async def grep_knowledge_files(
         return json.dumps({'error': 'Pattern is required'})
 
     try:
-        from open_webui.models.files import Files
-        from open_webui.models.knowledge import Knowledges
-        from open_webui.tools.knowledge_fs import build_matcher
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.knowledge import Knowledges
+        from shaheen_ys_ui.tools.knowledge_fs import build_matcher
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -1980,7 +1980,7 @@ async def grep_knowledge_files(
                 files_to_search.append(file)
         elif __model_knowledge__:
             # Scoped to model's attached knowledge
-            from open_webui.models.access_grants import AccessGrants
+            from shaheen_ys_ui.models.access_grants import AccessGrants
 
             seen_ids = set()
             for item in __model_knowledge__:
@@ -2131,7 +2131,7 @@ async def view_file(
     offset = max(offset, 0)
 
     try:
-        from open_webui.models.files import Files
+        from shaheen_ys_ui.models.files import Files
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -2246,9 +2246,9 @@ async def view_knowledge_file(
     offset = max(offset, 0)
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.files import Files
-        from open_webui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.knowledge import Knowledges
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -2395,10 +2395,10 @@ async def list_knowledge(
     count = min(count, 200)
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.files import Files
-        from open_webui.models.knowledge import Knowledges
-        from open_webui.models.notes import Notes
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.notes import Notes
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -2534,12 +2534,12 @@ async def query_knowledge_files(
                 knowledge_ids = [knowledge_ids]
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.files import Files
-        from open_webui.models.knowledge import Knowledges
-        from open_webui.models.notes import Notes
-        from open_webui.retrieval.external import retrieve_external_knowledge
-        from open_webui.retrieval.utils import query_collection
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.files import Files
+        from shaheen_ys_ui.models.knowledge import Knowledges
+        from shaheen_ys_ui.models.notes import Notes
+        from shaheen_ys_ui.retrieval.external import retrieve_external_knowledge
+        from shaheen_ys_ui.retrieval.utils import query_collection
 
         user_id = __user__.get('id')
         user_role = __user__.get('role', 'user')
@@ -2732,9 +2732,9 @@ async def query_knowledge_bases(
     try:
         import heapq
 
-        from open_webui.models.knowledge import Knowledges
-        from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-        from open_webui.routers.knowledge import KNOWLEDGE_BASES_COLLECTION
+        from shaheen_ys_ui.models.knowledge import Knowledges
+        from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+        from shaheen_ys_ui.routers.knowledge import KNOWLEDGE_BASES_COLLECTION
 
         user_id = __user__.get('id')
         user_group_ids = [group.id for group in await Groups.get_groups_by_member_id(user_id)]
@@ -2833,8 +2833,8 @@ async def view_skill(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.skills import Skills
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.skills import Skills
 
         user_id = __user__.get('id')
 
@@ -3054,9 +3054,9 @@ async def create_automation(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.automations import AutomationData, AutomationForm, Automations
-        from open_webui.models.users import Users
-        from open_webui.utils.automations import next_n_runs_ns, next_run_ns, validate_rrule
+        from shaheen_ys_ui.models.automations import AutomationData, AutomationForm, Automations
+        from shaheen_ys_ui.models.users import Users
+        from shaheen_ys_ui.utils.automations import next_n_runs_ns, next_run_ns, validate_rrule
 
         user_id = __user__.get('id')
         user = await Users.get_user_by_id(user_id)
@@ -3132,9 +3132,9 @@ async def update_automation(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.automations import AutomationData, AutomationForm, Automations
-        from open_webui.models.users import Users
-        from open_webui.utils.automations import next_n_runs_ns, next_run_ns, validate_rrule
+        from shaheen_ys_ui.models.automations import AutomationData, AutomationForm, Automations
+        from shaheen_ys_ui.models.users import Users
+        from shaheen_ys_ui.utils.automations import next_n_runs_ns, next_run_ns, validate_rrule
 
         user_id = __user__.get('id')
         user = await Users.get_user_by_id(user_id)
@@ -3207,9 +3207,9 @@ async def list_automations(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.automations import Automations
-        from open_webui.models.users import Users
-        from open_webui.utils.automations import next_n_runs_ns
+        from shaheen_ys_ui.models.automations import Automations
+        from shaheen_ys_ui.models.users import Users
+        from shaheen_ys_ui.utils.automations import next_n_runs_ns
 
         user_id = __user__.get('id')
         user = await Users.get_user_by_id(user_id)
@@ -3267,9 +3267,9 @@ async def toggle_automation(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.automations import Automations
-        from open_webui.models.users import Users
-        from open_webui.utils.automations import next_run_ns
+        from shaheen_ys_ui.models.automations import Automations
+        from shaheen_ys_ui.models.users import Users
+        from shaheen_ys_ui.utils.automations import next_run_ns
 
         user_id = __user__.get('id')
         user = await Users.get_user_by_id(user_id)
@@ -3318,7 +3318,7 @@ async def delete_automation(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.automations import AutomationRuns, Automations
+        from shaheen_ys_ui.models.automations import AutomationRuns, Automations
 
         user_id = __user__.get('id')
 
@@ -3429,7 +3429,7 @@ async def search_calendar_events(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.calendar import CalendarEvents
+        from shaheen_ys_ui.models.calendar import CalendarEvents
 
         user_id = __user__.get('id')
         tz = _get_user_tz(__user__)
@@ -3532,7 +3532,7 @@ async def create_calendar_event(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.calendar import CalendarEventForm, CalendarEvents, Calendars
+        from shaheen_ys_ui.models.calendar import CalendarEventForm, CalendarEvents, Calendars
 
         user_id = __user__.get('id')
 
@@ -3551,8 +3551,8 @@ async def create_calendar_event(
         if not cal:
             return json.dumps({'error': 'Calendar not found'})
         if cal.user_id != user_id and __user__.get('role') != 'admin':
-            from open_webui.models.access_grants import AccessGrants
-            from open_webui.models.groups import Groups
+            from shaheen_ys_ui.models.access_grants import AccessGrants
+            from shaheen_ys_ui.models.groups import Groups
 
             user_group_ids = [g.id for g in await Groups.get_groups_by_member_id(user_id)]
             if not await AccessGrants.has_access(
@@ -3659,9 +3659,9 @@ async def update_calendar_event(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.calendar import CalendarEvents, CalendarEventUpdateForm, Calendars
-        from open_webui.models.groups import Groups
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.calendar import CalendarEvents, CalendarEventUpdateForm, Calendars
+        from shaheen_ys_ui.models.groups import Groups
 
         user_id = __user__.get('id')
 
@@ -3762,9 +3762,9 @@ async def delete_calendar_event(
         return json.dumps({'error': 'User context not available'})
 
     try:
-        from open_webui.models.access_grants import AccessGrants
-        from open_webui.models.calendar import CalendarEvents, Calendars
-        from open_webui.models.groups import Groups
+        from shaheen_ys_ui.models.access_grants import AccessGrants
+        from shaheen_ys_ui.models.calendar import CalendarEvents, Calendars
+        from shaheen_ys_ui.models.groups import Groups
 
         user_id = __user__.get('id')
 

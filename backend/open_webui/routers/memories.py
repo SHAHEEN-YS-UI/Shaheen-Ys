@@ -5,16 +5,16 @@ import logging
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.config import Config
-from open_webui.models.memories import Memories, MemoryModel
-from open_webui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
-from open_webui.config import RAG_EMBEDDING_QUERY_PREFIX
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.auth import get_verified_user
-from open_webui.utils.memory import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.memories import Memories, MemoryModel
+from shaheen_ys_ui.retrieval.vector.async_client import ASYNC_VECTOR_DB_CLIENT
+from shaheen_ys_ui.config import RAG_EMBEDDING_QUERY_PREFIX
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.auth import get_verified_user
+from shaheen_ys_ui.utils.memory import (
     clean_memory_content,
     clean_memory_path,
     list_memory_path_groups,
@@ -300,7 +300,7 @@ async def query_memory(
     # better).
     relevance_threshold = await Config.get('rag.relevance_threshold', 0.0)
     if results and relevance_threshold > 0.0 and results.distances and results.distances[0]:
-        from open_webui.retrieval.vector.main import SearchResult
+        from shaheen_ys_ui.retrieval.vector.main import SearchResult
 
         filtered_ids = []
         filtered_docs = []

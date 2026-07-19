@@ -4,7 +4,7 @@ import time
 import uuid
 from typing import Optional
 
-from open_webui.internal.db import Base, JSONField, get_async_db_context
+from shaheen_ys_ui.internal.db import Base, JSONField, get_async_db_context
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import JSON, BigInteger, Boolean, Column, Text, delete, func, select, or_, and_
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -163,7 +163,7 @@ class FolderTable:
         Returns {folder_id: highest_permission} for all folders shared with user.
         Checks direct user grants, group grants, and public (user:*) grants.
         """
-        from open_webui.models.access_grants import AccessGrant
+        from shaheen_ys_ui.models.access_grants import AccessGrant
 
         async with get_async_db_context(db) as db:
             conditions = [

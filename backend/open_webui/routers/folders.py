@@ -8,28 +8,28 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile, status
 from fastapi.responses import FileResponse, StreamingResponse
-from open_webui.config import UPLOAD_DIR
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.internal.db import get_async_session
-from open_webui.models.config import Config
-from open_webui.models.chats import Chats
-from open_webui.models.folders import (
+from shaheen_ys_ui.config import UPLOAD_DIR
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.chats import Chats
+from shaheen_ys_ui.models.folders import (
     FolderForm,
     FolderModel,
     FolderNameIdResponse,
     Folders,
     FolderUpdateForm,
 )
-from open_webui.models.access_grants import AccessGrants
-from open_webui.models.groups import Groups
-from open_webui.models.users import Users
-from open_webui.utils.access_control import has_permission
-from open_webui.utils.access_control import (
+from shaheen_ys_ui.models.access_grants import AccessGrants
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.users import Users
+from shaheen_ys_ui.utils.access_control import has_permission
+from shaheen_ys_ui.utils.access_control import (
     filter_allowed_access_grants,
 )
-from open_webui.utils.access_control.files import get_accessible_folder_files
-from open_webui.utils.auth import get_admin_user, get_verified_user
+from shaheen_ys_ui.utils.access_control.files import get_accessible_folder_files
+from shaheen_ys_ui.utils.auth import get_admin_user, get_verified_user
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -39,7 +39,7 @@ log = logging.getLogger(__name__)
 router = APIRouter()
 
 
-from open_webui.utils.access_control.folders import has_folder_access as _has_folder_access
+from shaheen_ys_ui.utils.access_control.folders import has_folder_access as _has_folder_access
 
 
 async def check_folders_permission(request: Request, user, db=None):

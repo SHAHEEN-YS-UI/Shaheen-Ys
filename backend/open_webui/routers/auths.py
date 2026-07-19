@@ -14,13 +14,13 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import JSONResponse, Response
 from ldap3 import NONE, Connection, Server, Tls
 from ldap3.utils.conv import escape_filter_chars
-from open_webui.config import (
+from shaheen_ys_ui.config import (
     ENABLE_PASSWORD_AUTH,
     OAUTH_PROVIDERS,
 )
-from open_webui.constants import ERROR_MESSAGES
-from open_webui.events import EVENTS, publish_event
-from open_webui.env import (
+from shaheen_ys_ui.constants import ERROR_MESSAGES
+from shaheen_ys_ui.events import EVENTS, publish_event
+from shaheen_ys_ui.env import (
     AIOHTTP_CLIENT_SESSION_SSL,
     ENABLE_INITIAL_ADMIN_SIGNUP,
     ENABLE_OAUTH_TOKEN_EXCHANGE,
@@ -33,8 +33,8 @@ from open_webui.env import (
     WEBUI_AUTH_TRUSTED_NAME_HEADER,
     WEBUI_AUTH_TRUSTED_ROLE_HEADER,
 )
-from open_webui.internal.db import get_async_session
-from open_webui.models.auths import (
+from shaheen_ys_ui.internal.db import get_async_session
+from shaheen_ys_ui.models.auths import (
     AddUserForm,
     ApiKey,
     Auths,
@@ -45,18 +45,18 @@ from open_webui.models.auths import (
     Token,
     UpdatePasswordForm,
 )
-from open_webui.models.config import Config
-from open_webui.models.groups import Groups
-from open_webui.models.oauth_sessions import OAuthSessions
-from open_webui.models.users import (
+from shaheen_ys_ui.models.config import Config
+from shaheen_ys_ui.models.groups import Groups
+from shaheen_ys_ui.models.oauth_sessions import OAuthSessions
+from shaheen_ys_ui.models.users import (
     UpdateProfileForm,
     UserModel,
     UserProfileImageResponse,
     Users,
     UserStatus,
 )
-from open_webui.utils.access_control import get_permissions, has_permission
-from open_webui.utils.auth import (
+from shaheen_ys_ui.utils.access_control import get_permissions, has_permission
+from shaheen_ys_ui.utils.auth import (
     create_api_key,
     create_token,
     decode_token,
@@ -69,10 +69,10 @@ from open_webui.utils.auth import (
     validate_password,
     verify_password,
 )
-from open_webui.utils.groups import apply_default_group_assignment
-from open_webui.utils.misc import parse_duration, validate_email_format
-from open_webui.utils.rate_limit import RateLimiter
-from open_webui.utils.redis import get_redis_client
+from shaheen_ys_ui.utils.groups import apply_default_group_assignment
+from shaheen_ys_ui.utils.misc import parse_duration, validate_email_format
+from shaheen_ys_ui.utils.rate_limit import RateLimiter
+from shaheen_ys_ui.utils.redis import get_redis_client
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 

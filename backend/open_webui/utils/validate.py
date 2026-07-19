@@ -3,7 +3,7 @@
 import re
 from urllib.parse import urlparse
 
-from open_webui.env import (
+from shaheen_ys_ui.env import (
     PROFILE_IMAGE_ALLOWED_MIME_TYPES,
     PROFILE_IMAGE_MAX_DATA_URI_SIZE,
 )
