@@ -10,7 +10,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/shaheen-ys-ui)
 
-![SHAHEEN -YS-UI Banner](./banner.png)
+![SHAHEEN -YS-UI Banner](https://i.postimg.cc/jSgqxtPt/Picsart-26-07-19-04-27-01-342.png)
 
 **SHAHEEN -YS-UI is an [extensible](https://docs.openwebui.com/features/extensibility/plugin), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
 
