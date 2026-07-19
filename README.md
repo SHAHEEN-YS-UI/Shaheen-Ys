@@ -1,31 +1,31 @@
-# Open WebUI 👋
+# SHAHEEN -YS-UI 👋
 
-![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
-![GitHub forks](https://img.shields.io/github/forks/open-webui/open-webui?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/open-webui/open-webui?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/open-webui/open-webui)
-![GitHub language count](https://img.shields.io/github/languages/count/open-webui/open-webui)
-![GitHub top language](https://img.shields.io/github/languages/top/open-webui/open-webui)
-![GitHub last commit](https://img.shields.io/github/last-commit/open-webui/open-webui?color=red)
+![GitHub stars](https://img.shields.io/github/stars/shaheen-ys-ui/shaheen-ys-ui?style=social)
+![GitHub forks](https://img.shields.io/github/forks/shaheen-ys-ui/shaheen-ys-ui?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/shaheen-ys-ui/shaheen-ys-ui?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/shaheen-ys-ui/shaheen-ys-ui)
+![GitHub language count](https://img.shields.io/github/languages/count/shaheen-ys-ui/shaheen-ys-ui)
+![GitHub top language](https://img.shields.io/github/languages/top/shaheen-ys-ui/shaheen-ys-ui)
+![GitHub last commit](https://img.shields.io/github/last-commit/shaheen-ys-ui/shaheen-ys-ui?color=red)
 [![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/open-webui)
+[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/shaheen-ys-ui)
 
-![Open WebUI Banner](./banner.png)
+![SHAHEEN -YS-UI Banner](./banner.png)
 
-**Open WebUI is an [extensible](https://docs.openwebui.com/features/extensibility/plugin), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
+**SHAHEEN -YS-UI is an [extensible](https://docs.openwebui.com/features/extensibility/plugin), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
 
 Passionate about open-source AI? [Join our team →](https://careers.openwebui.com/)
 
-![Open WebUI Demo](./demo.png)
+![SHAHEEN -YS-UI Demo](./demo.png)
 
 > [!TIP]  
 > **Looking for an [Enterprise Plan](https://docs.openwebui.com/enterprise)?** – **[Speak with Our Sales Team Today!](https://docs.openwebui.com/enterprise)**
 >
 > Get **enhanced capabilities**, including **custom theming and branding**, **Service Level Agreement (SLA) support**, **Long-Term Support (LTS) versions**, and **more!**
 
-For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
+For more information, be sure to check out our [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/).
 
-## Key Features of Open WebUI ⭐
+## Key Features of SHAHEEN -YS-UI ⭐
 
 - 🚀 **Effortless Setup**: Install seamlessly via pip, uv, Docker, or Kubernetes (kubectl, kustomize, or helm), with `:ollama` and `:cuda` tagged images available for container deployments.
 
@@ -33,9 +33,9 @@ For more information, be sure to check out our [Open WebUI Documentation](https:
 
 - 🔐 **Granular RBAC & User Groups**: Administrators define detailed roles, groups, and permissions, giving each user exactly the access they need. Secure by default, with tailored experiences per group.
 
-- 🧩 **Plugin Support**: Extend Open WebUI with **Filters**, **Actions**, **Pipes**, **Tools**, and **Skills**. Connect external services through **MCP**, **MCPO**, and **OpenAPI tool servers**. Build custom integrations, rate limits, approval flows, data connections, and more.
+- 🧩 **Plugin Support**: Extend SHAHEEN -YS-UI with **Filters**, **Actions**, **Pipes**, **Tools**, and **Skills**. Connect external services through **MCP**, **MCPO**, and **OpenAPI tool servers**. Build custom integrations, rate limits, approval flows, data connections, and more.
 
-- 🤖 **Models & Agents**: Wrap any base model with custom instructions, tools, and knowledge to build specialized agents. Supports dynamic variables, per-user/group access control, and community preset imports via [Open WebUI Community](https://openwebui.com/).
+- 🤖 **Models & Agents**: Wrap any base model with custom instructions, tools, and knowledge to build specialized agents. Supports dynamic variables, per-user/group access control, and community preset imports via [SHAHEEN -YS-UI Community](https://openwebui.com/).
 
 - 📝 **Notes**: A dedicated workspace for content outside conversations. Draft with a rich editor, use AI to rewrite selected text, and attach notes to any chat for full-context injection.
 
@@ -81,29 +81,29 @@ For more information, be sure to check out our [Open WebUI Documentation](https:
 
 - ⚖️ **Horizontal Scalability**: Redis-backed session management and WebSocket support for multi-worker, multi-node deployments behind load balancers.
 
-- 🌐🌍 **Multilingual Support**: Use Open WebUI in your preferred language with i18n support. We're actively seeking contributors to expand language coverage!
+- 🌐🌍 **Multilingual Support**: Use SHAHEEN -YS-UI in your preferred language with i18n support. We're actively seeking contributors to expand language coverage!
 
-- 🌟 **Continuous Updates**: We're committed to improving Open WebUI with regular updates, fixes, and new features.
+- 🌟 **Continuous Updates**: We're committed to improving SHAHEEN -YS-UI with regular updates, fixes, and new features.
 
-- 🛡️ **Transparent Security Process**: Security reports are triaged, fixed, and published as open advisories through a documented responsible-disclosure process. See our [Security Policy](https://github.com/open-webui/open-webui/security).
+- 🛡️ **Transparent Security Process**: Security reports are triaged, fixed, and published as open advisories through a documented responsible-disclosure process. See our [Security Policy](https://github.com/shaheen-ys-ui/shaheen-ys-ui/security).
 
-Want to learn more about Open WebUI's features? Check out our [Open WebUI documentation](https://docs.openwebui.com/features) for a comprehensive overview!
+Want to learn more about SHAHEEN -YS-UI's features? Check out our [SHAHEEN -YS-UI documentation](https://docs.openwebui.com/features) for a comprehensive overview!
 
-## The Open WebUI Ecosystem 🌐
+## The SHAHEEN -YS-UI Ecosystem 🌐
 
-Open WebUI is the core, surrounded by companion apps and infrastructure that extend what your AI can do, where it can reach, and how you run it:
+SHAHEEN -YS-UI is the core, surrounded by companion apps and infrastructure that extend what your AI can do, where it can reach, and how you run it:
 
-- ⚡ **Open Terminal** ([open-webui/open-terminal](https://github.com/open-webui/open-terminal)): A self-hosted computing environment that plugs into Open WebUI, giving the AI a place to write code, run it, read output, fix errors, and iterate inside the chat.
+- ⚡ **Open Terminal** ([shaheen-ys-ui/open-terminal](https://github.com/shaheen-ys-ui/open-terminal)): A self-hosted computing environment that plugs into SHAHEEN -YS-UI, giving the AI a place to write code, run it, read output, fix errors, and iterate inside the chat.
 
-- 🔒 **Terminals** · Enterprise ([open-webui/terminals](https://github.com/open-webui/terminals)): Per-user isolated containers with separate credentials, resource limits, and network rules. Automatic lifecycle management on Docker or Kubernetes.
+- 🔒 **Terminals** · Enterprise ([shaheen-ys-ui/terminals](https://github.com/shaheen-ys-ui/terminals)): Per-user isolated containers with separate credentials, resource limits, and network rules. Automatic lifecycle management on Docker or Kubernetes.
 
-- 💻 **cptr** ([open-webui/computer](https://github.com/open-webui/computer)): A standalone, mobile-first computer and coding agent that runs on the machine you own. Files, terminal, and git in a browser tab, reachable from your phone. Connect it into Open WebUI as a model, or reach it from Telegram, WhatsApp, and more.
+- 💻 **cptr** ([shaheen-ys-ui/computer](https://github.com/shaheen-ys-ui/computer)): A standalone, mobile-first computer and coding agent that runs on the machine you own. Files, terminal, and git in a browser tab, reachable from your phone. Connect it into SHAHEEN -YS-UI as a model, or reach it from Telegram, WhatsApp, and more.
 
-- 🔄 **oikb** ([open-webui/oikb](https://github.com/open-webui/oikb)): Feed your Knowledge Bases from 45+ sources (GitHub, Confluence, ServiceNow, Salesforce, Jira, Slack, SharePoint, Notion, and more), keeping the tools your team already uses continuously in sync.
+- 🔄 **oikb** ([shaheen-ys-ui/oikb](https://github.com/shaheen-ys-ui/oikb)): Feed your Knowledge Bases from 45+ sources (GitHub, Confluence, ServiceNow, Salesforce, Jira, Slack, SharePoint, Notion, and more), keeping the tools your team already uses continuously in sync.
 
-- 🖥️ **Native Desktop App** ([open-webui/desktop](https://github.com/open-webui/desktop)): Run Open WebUI as a native app on macOS, Windows, and Linux. System-wide Spotlight chat bar with screenshot capture, push-to-talk voice, and optional fully-local inference via a built-in llama.cpp engine.
+- 🖥️ **Native Desktop App** ([shaheen-ys-ui/desktop](https://github.com/shaheen-ys-ui/desktop)): Run SHAHEEN -YS-UI as a native app on macOS, Windows, and Linux. System-wide Spotlight chat bar with screenshot capture, push-to-talk voice, and optional fully-local inference via a built-in llama.cpp engine.
 
-Want to learn more? Check out our [Open WebUI documentation](https://docs.openwebui.com) for more details!
+Want to learn more? Check out our [SHAHEEN -YS-UI documentation](https://docs.openwebui.com) for more details!
 
 ---
 
@@ -113,41 +113,41 @@ We are incredibly grateful for the generous support of our sponsors. Their contr
 
 ### Installation via Python pip 🐍
 
-Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.11** to avoid compatibility issues.
+SHAHEEN -YS-UI can be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.11** to avoid compatibility issues.
 
-1. **Install Open WebUI**:
-   Open your terminal and run the following command to install Open WebUI:
-
-   ```bash
-   pip install open-webui
-   ```
-
-2. **Running Open WebUI**:
-   After installation, you can start Open WebUI by executing:
+1. **Install SHAHEEN -YS-UI**:
+   Open your terminal and run the following command to install SHAHEEN -YS-UI:
 
    ```bash
-   open-webui serve
+   pip install shaheen-ys-ui
    ```
 
-This will start the Open WebUI server, which you can access at [http://localhost:8080](http://localhost:8080)
+2. **Running SHAHEEN -YS-UI**:
+   After installation, you can start SHAHEEN -YS-UI by executing:
+
+   ```bash
+   shaheen-ys-ui serve
+   ```
+
+This will start the SHAHEEN -YS-UI server, which you can access at [http://localhost:8080](http://localhost:8080)
 
 ### Quick Start with Docker 🐳
 
 > [!NOTE]  
-> Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on [Open WebUI Documentation](https://docs.openwebui.com/) is ready to assist you.
+> Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/) is ready to assist you.
 
 > [!WARNING]
-> When using Docker to install Open WebUI, make sure to include the `-v open-webui:/app/backend/data` in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.
+> When using Docker to install SHAHEEN -YS-UI, make sure to include the `-v shaheen-ys-ui:/app/backend/data` in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.
 
 > [!TIP]  
-> If you wish to utilize Open WebUI with Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either `:cuda` or `:ollama`. To enable CUDA, you must install the [Nvidia CUDA container toolkit](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) on your Linux/WSL system.
+> If you wish to utilize SHAHEEN -YS-UI with Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either `:cuda` or `:ollama`. To enable CUDA, you must install the [Nvidia CUDA container toolkit](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) on your Linux/WSL system.
 
 ### Installation with Default Configuration
 
 - **If Ollama is on your computer**, use this command:
 
   ```bash
-  docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+  docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:main
   ```
 
 - **If Ollama is on a Different Server**, use this command:
@@ -155,13 +155,13 @@ This will start the Open WebUI server, which you can access at [http://localhost
   To connect to Ollama on another server, change the `OLLAMA_BASE_URL` to the server's URL:
 
   ```bash
-  docker run -d -p 3000:8080 -e OLLAMA_BASE_URL=https://example.com -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+  docker run -d -p 3000:8080 -e OLLAMA_BASE_URL=https://example.com -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:main
   ```
 
-- **To run Open WebUI with Nvidia GPU support**, use this command:
+- **To run SHAHEEN -YS-UI with Nvidia GPU support**, use this command:
 
   ```bash
-  docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda
+  docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:cuda
   ```
 
 ### Installation for OpenAI API Usage Only
@@ -169,52 +169,52 @@ This will start the Open WebUI server, which you can access at [http://localhost
 - **If you're only using OpenAI API**, use this command:
 
   ```bash
-  docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+  docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:main
   ```
 
-### Installing Open WebUI with Bundled Ollama Support
+### Installing SHAHEEN -YS-UI with Bundled Ollama Support
 
-This installation method uses a single container image that bundles Open WebUI with Ollama, allowing for a streamlined setup via a single command. Choose the appropriate command based on your hardware setup:
+This installation method uses a single container image that bundles SHAHEEN -YS-UI with Ollama, allowing for a streamlined setup via a single command. Choose the appropriate command based on your hardware setup:
 
 - **With GPU Support**:
   Utilize GPU resources by running the following command:
 
   ```bash
-  docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+  docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:ollama
   ```
 
 - **For CPU Only**:
   If you're not using a GPU, use this command instead:
 
   ```bash
-  docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+  docker run -d -p 3000:8080 -v ollama:/root/.ollama -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:ollama
   ```
 
-Both commands facilitate a built-in, hassle-free installation of both Open WebUI and Ollama, ensuring that you can get everything up and running swiftly.
+Both commands facilitate a built-in, hassle-free installation of both SHAHEEN -YS-UI and Ollama, ensuring that you can get everything up and running swiftly.
 
-After installation, you can access Open WebUI at [http://localhost:3000](http://localhost:3000). Enjoy! 😄
+After installation, you can access SHAHEEN -YS-UI at [http://localhost:3000](http://localhost:3000). Enjoy! 😄
 
 ### Other Installation Methods
 
-We offer various installation alternatives, including non-Docker native installation methods, Docker Compose, Kustomize, and Helm. Visit our [Open WebUI Documentation](https://docs.openwebui.com/getting-started/) or join our [Discord community](https://discord.gg/5rJgQTnV4s) for comprehensive guidance.
+We offer various installation alternatives, including non-Docker native installation methods, Docker Compose, Kustomize, and Helm. Visit our [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/getting-started/) or join our [Discord community](https://discord.gg/5rJgQTnV4s) for comprehensive guidance.
 
 ### Troubleshooting
 
-Encountering connection issues? Our [Open WebUI Documentation](https://docs.openwebui.com/troubleshooting/) has got you covered. For further assistance and to join our vibrant community, visit the [Open WebUI Discord](https://discord.gg/5rJgQTnV4s).
+Encountering connection issues? Our [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/troubleshooting/) has got you covered. For further assistance and to join our vibrant community, visit the [SHAHEEN -YS-UI Discord](https://discord.gg/5rJgQTnV4s).
 
-#### Open WebUI: Server Connection Error
+#### SHAHEEN -YS-UI: Server Connection Error
 
 If you're experiencing connection issues, it’s often due to the WebUI docker container not being able to reach the Ollama server at 127.0.0.1:11434 (host.docker.internal:11434) inside the container . Use the `--network=host` flag in your docker command to resolve this. Note that the port changes from 3000 to 8080, resulting in the link: `http://localhost:8080`.
 
 **Example Docker Command**:
 
 ```bash
-docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -d --network=host -v shaheen-ys-ui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name shaheen-ys-ui --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:main
 ```
 
 ### Keeping Your Docker Installation Up-to-Date
 
-Check our Updating Guide available in our [Open WebUI Documentation](https://docs.openwebui.com/getting-started/updating).
+Check our Updating Guide available in our [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/getting-started/updating).
 
 ### Using the Dev Branch 🌙
 
@@ -224,12 +224,12 @@ Check our Updating Guide available in our [Open WebUI Documentation](https://doc
 If you want to try out the latest bleeding-edge features and are okay with occasional instability, you can use the `:dev` tag like this:
 
 ```bash
-docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui --add-host=host.docker.internal:host-gateway --restart always ghcr.io/open-webui/open-webui:dev
+docker run -d -p 3000:8080 -v shaheen-ys-ui:/app/backend/data --name shaheen-ys-ui --add-host=host.docker.internal:host-gateway --restart always ghcr.io/shaheen-ys-ui/shaheen-ys-ui:dev
 ```
 
 ### Offline Mode
 
-If you are running Open WebUI in an offline environment, you can set the `HF_HUB_OFFLINE` environment variable to `1` to prevent attempts to download models from the internet.
+If you are running SHAHEEN -YS-UI in an offline environment, you can set the `HF_HUB_OFFLINE` environment variable to `1` to prevent attempts to download models from the internet.
 
 ```bash
 export HF_HUB_OFFLINE=1
@@ -237,31 +237,31 @@ export HF_HUB_OFFLINE=1
 
 ## What's Next? 🌟
 
-Discover upcoming features on our roadmap in the [Open WebUI Documentation](https://docs.openwebui.com/roadmap/).
+Discover upcoming features on our roadmap in the [SHAHEEN -YS-UI Documentation](https://docs.openwebui.com/roadmap/).
 
 ## License 📜
 
-This project contains code under multiple licenses. The current codebase includes components licensed under the Open WebUI License with an additional requirement to preserve the "Open WebUI" branding, as well as prior contributions under their respective original licenses. For a detailed record of license changes and the applicable terms for each section of the code, please refer to [LICENSE_HISTORY](./LICENSE_HISTORY). For complete and updated licensing details, please see the [LICENSE](./LICENSE) and [LICENSE_HISTORY](./LICENSE_HISTORY) files.
+This project contains code under multiple licenses. The current codebase includes components licensed under the SHAHEEN -YS-UI License with an additional requirement to preserve the "SHAHEEN -YS-UI" branding, as well as prior contributions under their respective original licenses. For a detailed record of license changes and the applicable terms for each section of the code, please refer to [LICENSE_HISTORY](./LICENSE_HISTORY). For complete and updated licensing details, please see the [LICENSE](./LICENSE) and [LICENSE_HISTORY](./LICENSE_HISTORY) files.
 
 ## Support 💬
 
 If you have any questions, suggestions, or need assistance, please open an issue or join our
-[Open WebUI Discord community](https://discord.gg/5rJgQTnV4s) to connect with us! 🤝
+[SHAHEEN -YS-UI Discord community](https://discord.gg/5rJgQTnV4s) to connect with us! 🤝
 
 ## Security 🛡️
 
-If you believe you've found a security vulnerability, or something that shouldn't be disclosed publicly, please [reach out confidentially through our responsible disclosure program on GitHub](https://github.com/open-webui/open-webui/security). We accept reports only through GitHub, not through any other platform. Thank you for helping us keep Open WebUI secure!
+If you believe you've found a security vulnerability, or something that shouldn't be disclosed publicly, please [reach out confidentially through our responsible disclosure program on GitHub](https://github.com/shaheen-ys-ui/shaheen-ys-ui/security). We accept reports only through GitHub, not through any other platform. Thank you for helping us keep SHAHEEN -YS-UI secure!
 
 ## Star History
 
-<a href="https://star-history.com/#open-webui/open-webui&Date">
+<a href="https://star-history.com/#shaheen-ys-ui/shaheen-ys-ui&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=open-webui/open-webui&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=open-webui/open-webui&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=open-webui/open-webui&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=shaheen-ys-ui/shaheen-ys-ui&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=shaheen-ys-ui/shaheen-ys-ui&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=shaheen-ys-ui/shaheen-ys-ui&type=Date" />
   </picture>
 </a>
 
 ---
 
-Created by [Timothy Jaeryang Baek](https://github.com/tjbck) - Let's make Open WebUI even more amazing together! 💪
+Created by [Timothy Jaeryang Baek](https://github.com/tjbck) - Let's make SHAHEEN -YS-UI even more amazing together! 💪
